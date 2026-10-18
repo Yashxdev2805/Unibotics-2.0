@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const fontSans = Inter({
@@ -39,7 +41,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fontSans.variable} ${fontHeading.variable}`}>
       <body className="min-h-screen flex flex-col font-sans bg-surface text-ink antialiased">
-        {children}
+        <Header />
+        <div className="flex-1 flex flex-col">{children}</div>
+        <Footer />
       </body>
     </html>
   );

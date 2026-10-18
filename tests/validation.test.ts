@@ -3,6 +3,8 @@ import {
   leadSchema,
   applicationSchema,
   bookingRequestSchema,
+  loginSchema,
+  signupSchema,
 } from "@/lib/validation/schemas";
 
 describe("Input Validation Schemas (API.md Contracts)", () => {
@@ -96,19 +98,50 @@ describe("Input Validation Schemas (API.md Contracts)", () => {
     });
 
     it("rejects a malformed non-UUID workshopId", () => {
-      const payload = {
-        workshopId: "not-a-valid-uuid",
-        requesterName: "Prof. S. K. Gupta",
-        requesterEmail: "dean.academics@enggcollege.ac.in",
-        requesterPhone: "+91 99887 76655",
-        instituteName: "Haryana Engineering College",
-        city: "Yamunanagar",
-        consent: true,
-        turnstileToken: "valid_token",
-      };
+        const payload = {
+          workshopId: "not-a-valid-uuid",
+          requesterName: "Prof. S. K. Gupta",
+          requesterEmail: "dean.academics@enggcollege.ac.in",
+          requesterPhone: "+91 99887 76655",
+          instituteName: "Haryana Engineering College",
+          city: "Yamunanagar",
+          consent: true,
+          turnstileToken: "valid_token",
+        };
 
-      const result = bookingRequestSchema.safeParse(payload);
+        const result = bookingRequestSchema.safeParse(payload);
+        expect(result.success).toBe(false);
+      });
+    });
+
+  describe("Authentication Schemas", () => {
+    it("accepts valid login credentials", () => {
+      const payload = {
+        email: "coordinator@school.edu.in",
+        password: "securePassword123",
+      };
+      const result = loginSchema.safeParse(payload);
+      expect(result.success).toBe(true);
+    });
+
+    it("rejects passwords shorter than 8 characters", () => {
+      const payload = {
+        email: "coordinator@school.edu.in",
+        password: "short",
+      };
+      const result = loginSchema.safeParse(payload);
       expect(result.success).toBe(false);
+    });
+
+    it("accepts valid student signup", () => {
+      const payload = {
+        fullName: "Aarav Patel",
+        email: "aarav@student.ac.in",
+        password: "studentPassword456",
+      };
+      const result = signupSchema.safeParse(payload);
+      expect(result.success).toBe(true);
     });
   });
 });
+
