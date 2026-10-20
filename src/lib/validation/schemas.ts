@@ -61,24 +61,30 @@ export type ApplicationInput = z.infer<typeof applicationSchema>;
  * Workshop Booking Request Schema (POST /api/bookings)
  * From API.md Section 2
  */
-export const bookingRequestSchema = z.object({
-  workshopId: z.string().uuid("Invalid workshop identifier"),
-  requesterName: z.string().trim().min(2).max(100),
-  requesterEmail: z.string().trim().email().max(150),
-  requesterPhone: z
-    .string()
-    .trim()
-    .regex(/^[0-9+\s\-()]{7,20}$/, "Valid phone number required"),
-  instituteName: z.string().trim().min(2).max(150),
-  city: z.string().trim().min(2).max(100),
-  venueType: z.string().trim().max(100).optional(),
-  studentCount: z.number().int().positive().max(1000).optional(),
-  preferredDates: z.string().trim().max(100).optional(),
-  consent: z.literal(true, {
-    errorMap: () => ({ message: "Consent required to submit booking" }),
-  }),
-  turnstileToken: z.string().min(1, "Anti-bot verification required"),
-});
+export const bookingRequestSchema = z
+  .object({
+    workshopId: z.string().uuid("Invalid workshop identifier").optional(),
+    workshopSlug: z.string().trim().min(1).optional(),
+    requesterName: z.string().trim().min(2).max(100),
+    requesterEmail: z.string().trim().email().max(150),
+    requesterPhone: z
+      .string()
+      .trim()
+      .regex(/^[0-9+\s\-()]{7,20}$/, "Valid phone number required"),
+    instituteName: z.string().trim().min(2).max(150),
+    city: z.string().trim().min(2).max(100),
+    venueType: z.string().trim().max(100).optional(),
+    studentCount: z.number().int().positive().max(1000).optional(),
+    preferredDates: z.string().trim().max(100).optional(),
+    consent: z.literal(true, {
+      errorMap: () => ({ message: "Consent required to submit booking" }),
+    }),
+    turnstileToken: z.string().min(1, "Anti-bot verification required"),
+  })
+  .refine((data) => Boolean(data.workshopId || data.workshopSlug), {
+    message: "Either workshopId or workshopSlug must be provided",
+    path: ["workshopId"],
+  });
 
 export type BookingRequestInput = z.infer<typeof bookingRequestSchema>;
 

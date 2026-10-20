@@ -97,22 +97,40 @@ describe("Input Validation Schemas (API.md Contracts)", () => {
       expect(result.success).toBe(true);
     });
 
-    it("rejects a malformed non-UUID workshopId", () => {
-        const payload = {
-          workshopId: "not-a-valid-uuid",
-          requesterName: "Prof. S. K. Gupta",
-          requesterEmail: "dean.academics@enggcollege.ac.in",
-          requesterPhone: "+91 99887 76655",
-          instituteName: "Haryana Engineering College",
-          city: "Yamunanagar",
-          consent: true,
-          turnstileToken: "valid_token",
-        };
+    it("accepts a valid booking request with workshopSlug", () => {
+      const payload = {
+        workshopSlug: "robotics-and-drones-accelerator",
+        requesterName: "Prof. S. K. Gupta",
+        requesterEmail: "dean.academics@enggcollege.ac.in",
+        requesterPhone: "+91 99887 76655",
+        instituteName: "Haryana Engineering College",
+        city: "Yamunanagar",
+        studentCount: 120,
+        preferredDates: "15 Nov 2026 to 20 Nov 2026",
+        consent: true,
+        turnstileToken: "valid_token",
+      };
 
-        const result = bookingRequestSchema.safeParse(payload);
-        expect(result.success).toBe(false);
-      });
+      const result = bookingRequestSchema.safeParse(payload);
+      expect(result.success).toBe(true);
     });
+
+    it("rejects a malformed non-UUID workshopId", () => {
+      const payload = {
+        workshopId: "not-a-valid-uuid",
+        requesterName: "Prof. S. K. Gupta",
+        requesterEmail: "dean.academics@enggcollege.ac.in",
+        requesterPhone: "+91 99887 76655",
+        instituteName: "Haryana Engineering College",
+        city: "Yamunanagar",
+        consent: true,
+        turnstileToken: "valid_token",
+      };
+
+      const result = bookingRequestSchema.safeParse(payload);
+      expect(result.success).toBe(false);
+    });
+  });
 
   describe("Authentication Schemas", () => {
     it("accepts valid login credentials", () => {

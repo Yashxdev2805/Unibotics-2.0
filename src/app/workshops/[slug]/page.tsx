@@ -136,10 +136,10 @@ export default async function WorkshopDetailPage({ params }: PageProps) {
             </div>
 
             <Link
-              href={`/contact?workshop=${workshop.slug}`}
+              href={`/workshops/${workshop.slug}/book`}
               className="w-full py-3 px-4 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 transition-colors"
             >
-              <span>Request Date & Quote</span>
+              <span>Book Workshop (RFP)</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
 
