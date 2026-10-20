@@ -4,6 +4,7 @@ import {
   Inbox,
   FileCheck2,
   CalendarCheck,
+  Award,
   Users,
   ArrowRight,
   CheckCircle2,
@@ -20,6 +21,7 @@ export default async function AdminOverviewPage() {
     { count: pendingApps },
     { count: totalBookings },
     { count: pendingBookings },
+    { count: totalCerts },
     { count: totalUsers },
     { data: recentLeads },
     { data: recentBookings },
@@ -30,6 +32,7 @@ export default async function AdminOverviewPage() {
     supabase.from("applications").select("*", { count: "exact", head: true }).eq("status", "pending"),
     supabase.from("bookings").select("*", { count: "exact", head: true }),
     supabase.from("bookings").select("*", { count: "exact", head: true }).eq("status", "pending"),
+    supabase.from("certificates").select("*", { count: "exact", head: true }),
     supabase.from("memberships").select("*", { count: "exact", head: true }),
     supabase
       .from("leads")
@@ -54,7 +57,7 @@ export default async function AdminOverviewPage() {
       </div>
 
       {/* KPI Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
         
         {/* New Leads */}
         <div className="bg-slate-950 border border-slate-800 p-4 space-y-2">
@@ -128,6 +131,25 @@ export default async function AdminOverviewPage() {
             className="text-[11px] text-teal-400 hover:text-teal-300 font-semibold flex items-center space-x-1 pt-2 border-t border-slate-850"
           >
             <span>Roles</span>
+            <ArrowRight className="w-3 h-3" />
+          </Link>
+        </div>
+
+        {/* Issued Certificates */}
+        <div className="bg-slate-950 border border-slate-800 p-4 space-y-2">
+          <div className="flex items-center justify-between text-slate-400 text-xs">
+            <span className="font-mono uppercase text-[10px]">Credentials</span>
+            <Award className="w-4 h-4 text-emerald-400" />
+          </div>
+          <div className="flex items-baseline space-x-2">
+            <span className="text-2xl font-black font-mono text-white">{totalCerts ?? 0}</span>
+            <span className="text-[11px] text-slate-400">Issued</span>
+          </div>
+          <Link
+            href="/admin/certificates"
+            className="text-[11px] text-teal-400 hover:text-teal-300 font-semibold flex items-center space-x-1 pt-2 border-t border-slate-850"
+          >
+            <span>Certificates</span>
             <ArrowRight className="w-3 h-3" />
           </Link>
         </div>

@@ -13,6 +13,7 @@ import {
   Award,
   User,
   QrCode,
+  Download,
 } from "lucide-react";
 
 export default function VerifyForm() {
@@ -202,6 +203,19 @@ export default function VerifyForm() {
                   </div>
                 </div>
               </div>
+
+              {result.status === "valid" && (
+                <div className="px-6 pb-6 pt-1 flex flex-col sm:flex-row gap-3">
+                  <a
+                    href={`/api/certificates/${encodeURIComponent(result.code || "")}/download`}
+                    download
+                    className="w-full sm:w-auto px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2 transition-colors border border-slate-950"
+                  >
+                    <Download className="w-4 h-4 text-teal-400" />
+                    <span>Download Official Verified PDF</span>
+                  </a>
+                </div>
+              )}
 
               {/* Bottom Guarantee Strip */}
               <div className="bg-slate-50 border-t border-slate-200 px-6 py-3 text-[11px] text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-1">

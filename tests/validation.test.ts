@@ -161,5 +161,23 @@ describe("Input Validation Schemas (API.md Contracts)", () => {
       expect(result.success).toBe(true);
     });
   });
+
+  describe("Certificate Public Code Generation (Phase 5 Contract)", () => {
+    it("generates correctly formatted unguessable public codes", async () => {
+      const { generateCertificateCode, isValidCertificateCode } = await import("@/lib/security/certificateCode");
+      const code = generateCertificateCode(2026);
+      expect(code).toMatch(/^UB-2026-[A-F0-9]{4}-[A-F0-9]{4}$/);
+      expect(isValidCertificateCode(code)).toBe(true);
+    });
+
+    it("detects invalid or tampered certificate codes", async () => {
+      const { isValidCertificateCode } = await import("@/lib/security/certificateCode");
+      expect(isValidCertificateCode("INVALID-CODE")).toBe(false);
+      expect(isValidCertificateCode("UB-2026-123")).toBe(false);
+      expect(isValidCertificateCode("UB-2026-ZZZZ-AAAA")).toBe(false); // Non-hex
+      expect(isValidCertificateCode("")).toBe(false);
+    });
+  });
 });
+
 

@@ -9,6 +9,7 @@ import {
   Inbox,
   FileCheck2,
   CalendarCheck,
+  Award,
   LogOut,
   ExternalLink,
   History,
@@ -99,6 +100,14 @@ export default async function AdminLayout({
             >
               <CalendarCheck className="w-4 h-4 text-slate-400" />
               <span>Workshop Bookings</span>
+            </Link>
+
+            <Link
+              href="/admin/certificates"
+              className="flex items-center space-x-2.5 px-3 py-2.5 text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent hover:border-slate-800 transition-colors"
+            >
+              <Award className="w-4 h-4 text-slate-400" />
+              <span>Verifiable Certificates</span>
             </Link>
 
             <Link

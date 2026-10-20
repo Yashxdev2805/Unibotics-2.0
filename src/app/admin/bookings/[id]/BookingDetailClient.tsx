@@ -14,6 +14,7 @@ import {
   deleteParticipant,
   setParticipantAttendance,
 } from "../actions";
+import { issueCertificatesForBooking } from "@/app/admin/certificates/actions";
 import {
   Calendar,
   Building2,
@@ -32,6 +33,7 @@ import {
   ArrowLeft,
   Check,
   X,
+  Award,
 } from "lucide-react";
 
 export interface BookingDetail {
@@ -132,6 +134,7 @@ export default function BookingDetailClient({
   const [showCsvBox, setShowCsvBox] = useState(false);
   const [csvImporting, setCsvImporting] = useState(false);
   const [partMessage, setPartMessage] = useState<{ ok: boolean; msg: string } | null>(null);
+  const [issuingCerts, setIssuingCerts] = useState(false);
 
   // Attendance State
   const [selectedSessionForAttendance, setSelectedSessionForAttendance] = useState<string>(
@@ -294,6 +297,32 @@ export default function BookingDetailClient({
       await deleteParticipant(participantId, booking.id);
     } catch (err) {
       alert("Failed to delete participant: " + (err as Error).message);
+    }
+  };
+
+  // Issue Certificates for Booking
+  const handleIssueCertificates = async () => {
+    if (!confirm("Generate and issue verified completion certificates for all attended participants in this cohort?")) {
+      return;
+    }
+
+    setIssuingCerts(true);
+    setPartMessage(null);
+
+    try {
+      const res = await issueCertificatesForBooking(booking.id);
+      if (!res.success) {
+        setPartMessage({ ok: false, msg: res.error || "Failed to issue certificates." });
+      } else {
+        setPartMessage({
+          ok: true,
+          msg: res.message || `Successfully generated and issued ${res.issuedCount} certificates.`,
+        });
+      }
+    } catch (err) {
+      setPartMessage({ ok: false, msg: (err as Error).message });
+    } finally {
+      setIssuingCerts(false);
     }
   };
 
@@ -764,6 +793,17 @@ export default function BookingDetailClient({
                 >
                   <FileSpreadsheet className="w-3.5 h-3.5" />
                   <span>{showCsvBox ? "Close CSV" : "Bulk Import CSV"}</span>
+                </button>
+
+                <button
+                  type="button"
+                  disabled={issuingCerts || participants.length === 0}
+                  onClick={handleIssueCertificates}
+                  className="px-2.5 py-1 bg-teal-600 hover:bg-teal-500 text-slate-950 font-mono text-xs font-bold uppercase flex items-center space-x-1 transition-colors disabled:opacity-40"
+                  title="Generate and issue verifiable completion certificates"
+                >
+                  <Award className="w-3.5 h-3.5" />
+                  <span>{issuingCerts ? "Issuing..." : "Issue Certificates"}</span>
                 </button>
               </div>
             </div>
