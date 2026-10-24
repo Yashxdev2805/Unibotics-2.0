@@ -49,6 +49,8 @@ export async function login(prevState: AuthActionResult | null, formData: FormDa
       target = "/team";
     } else if (roles.includes("institute_admin")) {
       target = "/institute";
+    } else if (roles.includes("student")) {
+      target = "/student";
     }
   }
 
@@ -81,7 +83,7 @@ export async function signup(prevState: AuthActionResult | null, formData: FormD
   }
 
   if (authData.session) {
-    redirect("/");
+    redirect("/student");
   }
 
   return {

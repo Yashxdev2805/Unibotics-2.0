@@ -9,6 +9,7 @@ import {
   Inbox,
   FileCheck2,
   CalendarCheck,
+  CalendarDays,
   Award,
   LogOut,
   ExternalLink,
@@ -100,6 +101,14 @@ export default async function AdminLayout({
             >
               <CalendarCheck className="w-4 h-4 text-slate-400" />
               <span>Workshop Bookings</span>
+            </Link>
+
+            <Link
+              href="/admin/calendar"
+              className="flex items-center space-x-2.5 px-3 py-2.5 text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent hover:border-slate-800 transition-colors"
+            >
+              <CalendarDays className="w-4 h-4 text-slate-400" />
+              <span>Operations Calendar</span>
             </Link>
 
             <Link

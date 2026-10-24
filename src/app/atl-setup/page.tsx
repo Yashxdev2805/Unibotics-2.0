@@ -7,10 +7,7 @@ import {
   HeartPulse,
   CheckCircle2,
   ArrowRight,
-  FileText,
   Clock,
-  GraduationCap,
-  Sparkles,
 } from "lucide-react";
 
 export const metadata = {
@@ -107,117 +104,117 @@ const PHASES = [
 
 export default function AtlSetupPage() {
   return (
-    <div className="flex-1 flex flex-col bg-slate-50 text-slate-900">
+    <div className="flex-1 flex flex-col relative text-[#F7F7F8]">
       {/* Breadcrumb & Sub-Strip */}
-      <section className="bg-white border-b border-slate-200 py-3 px-4 sm:px-6 text-xs text-slate-500">
-        <div className="max-w-container-wide mx-auto flex items-center space-x-2">
-          <Link href="/" className="hover:text-slate-900">
+      <section className="border-b border-[#2A2342] bg-[#0D0B14]/60 py-3 px-4 sm:px-6 text-xs text-[#8B8988]">
+        <div className="max-w-stage mx-auto flex items-center space-x-2">
+          <Link href="/" className="hover:text-white transition-colors">
             Home
           </Link>
-          <span>/</span>
-          <span className="font-semibold text-slate-900">Atal Tinkering Lab Setup</span>
+          <span className="text-[#2A2342]">/</span>
+          <span className="font-semibold text-white">Atal Tinkering Lab Setup</span>
         </div>
       </section>
 
-      {/* Hero Section: High Density Dual Column */}
-      <section className="py-12 md:py-16 px-4 sm:px-6 bg-white border-b border-slate-200">
-        <div className="max-w-container-wide mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      {/* Hero Section */}
+      <section className="py-12 md:py-16 px-4 sm:px-6">
+        <div className="max-w-stage mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-5">
-            <div className="inline-flex items-center space-x-2 px-2.5 py-1 bg-slate-100 border border-slate-300 text-xs font-mono font-semibold text-slate-800">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#17132A] border border-[#2A2342] text-xs font-mono font-semibold text-[#C9A3FF]">
+              <ShieldCheck className="w-4 h-4 text-[#45B558]" />
               <span>NITI AAYOG / ATAL INNOVATION MISSION (AIM) ALIGNED</span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tight leading-tight">
+            <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
               Turnkey Atal Tinkering Lab Implementation
             </h1>
 
-            <p className="text-base text-slate-600 leading-relaxed max-w-2xl">
+            <p className="text-base text-[#8B8988] leading-relaxed max-w-2xl">
               Complete, end-to-end setup and ongoing operational enablement for schools selected under the Atal Innovation Mission. We handle hardware procurement, room acoustics, 3D printers, safety infrastructure, and structured teacher training.
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 href="/contact?need=atl_lab"
-                className="px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs tracking-wider uppercase flex items-center space-x-2 transition-colors shadow-sm"
+                className="btn-primary-violet px-6 py-3 rounded-full text-xs font-semibold tracking-wider uppercase flex items-center space-x-2 shadow-glow"
               >
                 <span>Request Lab RFP & Quote</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
                 href="#packages"
-                className="px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs tracking-wider uppercase border border-slate-300 transition-colors"
+                className="btn-secondary-dark px-6 py-3 rounded-full text-xs font-semibold tracking-wider uppercase"
               >
                 Inspect Equipment Manifest
               </a>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200 text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-[#2A2342] text-xs">
               <div>
-                <span className="font-mono text-slate-400 block text-[10px]">PACKAGE SCOPE</span>
-                <span className="font-bold text-slate-900">P1 through P4</span>
+                <span className="font-mono text-[#7468A0] block text-[10px]">PACKAGE SCOPE</span>
+                <span className="font-bold text-white">P1 through P4</span>
               </div>
               <div>
-                <span className="font-mono text-slate-400 block text-[10px]">DEPLOYMENT</span>
-                <span className="font-bold text-slate-900">15 to 30 Days</span>
+                <span className="font-mono text-[#7468A0] block text-[10px]">DEPLOYMENT</span>
+                <span className="font-bold text-white">15 to 30 Days</span>
               </div>
               <div>
-                <span className="font-mono text-slate-400 block text-[10px]">FACULTY TRAINING</span>
-                <span className="font-bold text-slate-900">40 Hours Hands-on</span>
+                <span className="font-mono text-[#7468A0] block text-[10px]">FACULTY TRAINING</span>
+                <span className="font-bold text-white">40 Hours Hands-on</span>
               </div>
               <div>
-                <span className="font-mono text-slate-400 block text-[10px]">CURRICULUM</span>
-                <span className="font-bold text-slate-900">NEP 2020 Aligned</span>
+                <span className="font-mono text-[#7468A0] block text-[10px]">CURRICULUM</span>
+                <span className="font-bold text-white">NEP 2020 Aligned</span>
               </div>
             </div>
           </div>
 
           {/* Right Architecture Blueprint Card */}
-          <div className="lg:col-span-5 bg-slate-900 text-slate-100 p-6 border border-slate-800 shadow-md">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-              <span className="font-mono text-xs text-slate-400 uppercase tracking-wider">
+          <div className="lg:col-span-5 glass-panel p-6 border border-[#2A2342] glow-line-top shadow-glow">
+            <div className="flex items-center justify-between border-b border-[#2A2342] pb-3 mb-4">
+              <span className="font-mono text-xs text-[#C9A3FF] uppercase tracking-wider font-semibold">
                 ATL Operational Blueprint
               </span>
-              <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800 px-2 py-0.5">
+              <span className="text-[11px] font-mono text-[#45B558] bg-[#17132A] border border-[#45B558]/30 px-2 py-0.5 rounded-full">
                 VERIFIED STANDARD
               </span>
             </div>
 
             <div className="space-y-3 text-xs">
-              <div className="p-3 bg-slate-800/80 border border-slate-700">
+              <div className="p-3 bg-[#0D0B14] border border-[#2A2342] rounded-xl">
                 <span className="font-semibold text-white block mb-0.5">Physical Space Requirement</span>
-                <p className="text-slate-400 text-[11px]">Minimum 1,500 sq. ft. dedicated area equipped with stabilized 230V AC lines, earthing, and anti-static workstations.</p>
+                <p className="text-[#8B8988] text-[11px]">Minimum 1,500 sq. ft. dedicated area equipped with stabilized 230V AC lines, earthing, and anti-static workstations.</p>
               </div>
 
-              <div className="p-3 bg-slate-800/80 border border-slate-700">
+              <div className="p-3 bg-[#0D0B14] border border-[#2A2342] rounded-xl">
                 <span className="font-semibold text-white block mb-0.5">Tinkering Cohort Capacity</span>
-                <p className="text-slate-400 text-[11px]">Designed to concurrently accommodate 30 to 40 students across 6 to 8 collaborative workbench clusters.</p>
+                <p className="text-[#8B8988] text-[11px]">Designed to concurrently accommodate 30 to 40 students across 6 to 8 collaborative workbench clusters.</p>
               </div>
 
-              <div className="p-3 bg-slate-800/80 border border-slate-700">
+              <div className="p-3 bg-[#0D0B14] border border-[#2A2342] rounded-xl">
                 <span className="font-semibold text-white block mb-0.5">Yearly Maintenance & Support</span>
-                <p className="text-slate-400 text-[11px]">Quarterly mentor visits, hardware component replacements under warranty, and annual project exhibition mentorship.</p>
+                <p className="text-[#8B8988] text-[11px]">Quarterly mentor visits, hardware component replacements under warranty, and annual project exhibition mentorship.</p>
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
+            <div className="mt-4 pt-3 border-t border-[#2A2342] flex items-center justify-between text-[11px] text-[#7468A0]">
               <span>Official Reference: AIM Guidelines v3.0</span>
-              <span className="font-mono text-slate-300">Kurukshetra Ops Hub</span>
+              <span className="font-mono text-[#C9A3FF]">Kurukshetra Hub</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Equipment Manifest (P1 to P4) */}
-      <section id="packages" className="py-14 px-4 sm:px-6 max-w-container-wide mx-auto w-full">
+      <section id="packages" className="py-14 px-4 sm:px-6 max-w-stage mx-auto w-full">
         <div className="mb-8">
-          <div className="flex items-center space-x-2 text-xs font-mono text-slate-500 mb-1">
+          <div className="flex items-center space-x-2 text-xs font-mono text-[#C9A3FF] mb-1">
             <span>OFFICIAL HARDWARE SPECIFICATION</span>
           </div>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+          <h2 className="text-2xl font-black text-white tracking-tight">
             Comprehensive Four-Package Inventory (P1 – P4)
           </h2>
-          <p className="text-xs text-slate-600 mt-1 max-w-2xl">
+          <p className="text-xs text-[#8B8988] mt-1 max-w-2xl">
             Unibotics supplies exclusively branded, industrial-tolerance components. No unbranded gray-market parts or volatile non-safety-rated batteries.
           </p>
         </div>
@@ -228,32 +225,33 @@ export default function AtlSetupPage() {
             return (
               <div
                 key={pkg.id}
-                className="bg-white border border-slate-300 p-6 flex flex-col justify-between shadow-sm hover:border-slate-400 transition-colors"
+                className="glass-panel p-6 flex flex-col justify-between border border-[#2A2342] hover:border-[#7468A0] transition-colors"
               >
                 <div>
-                  <div className="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+                  <div className="flex items-center justify-between border-b border-[#2A2342] pb-3 mb-4">
                     <div className="flex items-center space-x-3">
-                      <div className="p-2 bg-slate-900 text-white">
-                        <Icon className="w-5 h-5 text-teal-400" />
+                      <div className="p-2.5 rounded-xl bg-[#17132A] text-[#C9A3FF] border border-[#2A2342]">
+                        <Icon className="w-5 h-5" />
                       </div>
-                      <span className="font-mono text-xs font-bold text-slate-500">{pkg.id}</span>
+                      <span className="font-mono text-xs font-bold text-[#C9A3FF]">{pkg.id}</span>
                     </div>
-                    <span className="text-[11px] font-mono text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5">
+
+                    <span className="text-[11px] font-mono text-[#45B558] bg-[#17132A] border border-[#45B558]/30 px-2 py-0.5 rounded-full">
                       AIM STANDARD
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-slate-950 mb-2">{pkg.title}</h3>
-                  <p className="text-xs text-slate-600 mb-4 leading-relaxed">{pkg.summary}</p>
+                  <h3 className="text-base font-bold text-white mb-2">{pkg.title}</h3>
+                  <p className="text-xs text-[#8B8988] mb-4 leading-relaxed">{pkg.summary}</p>
 
-                  <div className="bg-slate-50 border border-slate-200 p-3 mb-4">
-                    <span className="text-[10px] font-mono uppercase text-slate-500 block mb-2 font-semibold">
+                  <div className="bg-[#0D0B14] border border-[#2A2342] p-3 mb-4 rounded-xl">
+                    <span className="text-[10px] font-mono uppercase text-[#7468A0] block mb-2 font-semibold">
                       Included Hardware Manifest:
                     </span>
-                    <ul className="space-y-1.5 text-xs text-slate-700">
+                    <ul className="space-y-1.5 text-xs text-[#8B8988]">
                       {pkg.items.map((item, idx) => (
                         <li key={idx} className="flex items-start space-x-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#45B558] mt-0.5 shrink-0" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -261,9 +259,9 @@ export default function AtlSetupPage() {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-500">
+                <div className="pt-3 border-t border-[#2A2342] flex items-center justify-between text-[11px] text-[#7468A0]">
                   <span>Factory Sealed & Tested</span>
-                  <span className="font-semibold text-slate-700">12 Months Direct Warranty</span>
+                  <span className="font-semibold text-[#C9A3FF]">12 Months Direct Warranty</span>
                 </div>
               </div>
             );
@@ -272,14 +270,14 @@ export default function AtlSetupPage() {
       </section>
 
       {/* 4-Phase Implementation Timeline */}
-      <section className="bg-white border-y border-slate-200 py-14 px-4 sm:px-6">
-        <div className="max-w-container-wide mx-auto">
+      <section className="bg-[#0D0B14]/70 border-y border-[#2A2342] py-14 px-4 sm:px-6">
+        <div className="max-w-stage mx-auto">
           <div className="mb-8">
-            <span className="font-mono text-xs text-slate-500 block mb-1">OPERATIONAL ROADMAP</span>
-            <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+            <span className="font-mono text-xs text-[#C9A3FF] block mb-1">OPERATIONAL ROADMAP</span>
+            <h2 className="text-2xl font-black text-white tracking-tight">
               Standard 30-Day Turnkey Deployment Process
             </h2>
-            <p className="text-xs text-slate-600 mt-1 max-w-2xl">
+            <p className="text-xs text-[#8B8988] mt-1 max-w-2xl">
               From site survey to ribbon cutting, our standardized four-phase protocol guarantees your institution meets all regulatory auditing milestones.
             </p>
           </div>
@@ -288,20 +286,20 @@ export default function AtlSetupPage() {
             {PHASES.map((phase) => (
               <div
                 key={phase.step}
-                className="bg-slate-50 border border-slate-200 p-5 flex flex-col justify-between"
+                className="glass-panel p-5 flex flex-col justify-between border border-[#2A2342]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-2xl font-black font-mono text-slate-300">{phase.step}</span>
-                    <span className="inline-flex items-center text-[10px] font-mono text-slate-600 bg-white border border-slate-200 px-2 py-0.5">
-                      <Clock className="w-3 h-3 mr-1 text-slate-400" />
+                    <span className="text-2xl font-black font-mono text-[#A020FF]">{phase.step}</span>
+                    <span className="inline-flex items-center text-[10px] font-mono text-[#C9A3FF] bg-[#17132A] border border-[#2A2342] px-2 py-0.5 rounded-full">
+                      <Clock className="w-3 h-3 mr-1 text-[#C9A3FF]" />
                       {phase.timeline}
                     </span>
                   </div>
-                  <h4 className="text-sm font-bold text-slate-900 mb-2">{phase.name}</h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">{phase.details}</p>
+                  <h4 className="text-sm font-bold text-white mb-2">{phase.name}</h4>
+                  <p className="text-xs text-[#8B8988] leading-relaxed">{phase.details}</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-200 text-[10px] font-mono text-slate-400 uppercase">
+                <div className="mt-4 pt-3 border-t border-[#2A2342] text-[10px] font-mono text-[#7468A0] uppercase">
                   Phase Milestone Certified
                 </div>
               </div>
@@ -311,65 +309,65 @@ export default function AtlSetupPage() {
       </section>
 
       {/* Turnkey vs Self-Managed Matrix */}
-      <section className="py-14 px-4 sm:px-6 max-w-container-wide mx-auto w-full">
+      <section className="py-14 px-4 sm:px-6 max-w-stage mx-auto w-full">
         <div className="mb-8">
-          <span className="font-mono text-xs text-slate-500 block mb-1">COMPARATIVE AUDIT</span>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+          <span className="font-mono text-xs text-[#C9A3FF] block mb-1">COMPARATIVE AUDIT</span>
+          <h2 className="text-2xl font-black text-white tracking-tight">
             Why Institutes Choose Turnkey Delivery Over Fragmented Vendors
           </h2>
         </div>
 
-        <div className="overflow-x-auto border border-slate-300 bg-white shadow-sm">
+        <div className="overflow-x-auto glass-panel border border-[#2A2342]">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="bg-slate-900 text-slate-200 font-mono text-[11px] uppercase tracking-wider">
-                <th className="p-3.5 border-r border-slate-800">Operational Factor</th>
-                <th className="p-3.5 border-r border-slate-800 text-emerald-400">Unibotics Turnkey Implementation</th>
-                <th className="p-3.5 text-slate-400">Independent Fragmented Procurement</th>
+              <tr className="bg-[#17132A] text-white font-mono text-[11px] uppercase tracking-wider">
+                <th className="p-3.5 border-r border-[#2A2342]">Operational Factor</th>
+                <th className="p-3.5 border-r border-[#2A2342] text-[#C9A3FF]">Unibotics Turnkey Implementation</th>
+                <th className="p-3.5 text-[#7468A0]">Independent Fragmented Procurement</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 text-slate-700">
+            <tbody className="divide-y divide-[#2A2342] text-[#8B8988]">
               <tr>
-                <td className="p-3.5 font-bold text-slate-900 bg-slate-50 border-r border-slate-200">
+                <td className="p-3.5 font-bold text-white bg-[#0D0B14] border-r border-[#2A2342]">
                   Vendor Accountability
                 </td>
-                <td className="p-3.5 border-r border-slate-200 text-slate-900 font-medium">
+                <td className="p-3.5 border-r border-[#2A2342] text-[#F7F7F8] font-medium">
                   Single point of contact for P1-P4 hardware, 3D printers, training, and maintenance.
                 </td>
-                <td className="p-3.5 text-slate-500">
+                <td className="p-3.5 text-[#7468A0]">
                   12+ different suppliers with conflicting delivery schedules and separate warranties.
                 </td>
               </tr>
               <tr>
-                <td className="p-3.5 font-bold text-slate-900 bg-slate-50 border-r border-slate-200">
+                <td className="p-3.5 font-bold text-white bg-[#0D0B14] border-r border-[#2A2342]">
                   Teacher Enablement
                 </td>
-                <td className="p-3.5 border-r border-slate-200 text-slate-900 font-medium">
+                <td className="p-3.5 border-r border-[#2A2342] text-[#F7F7F8] font-medium">
                   40 hours structured on-site training + curriculum guidebooks + project schematics.
                 </td>
-                <td className="p-3.5 text-slate-500">
+                <td className="p-3.5 text-[#7468A0]">
                   Zero training or superficial 2-hour software demonstration leaving equipment unused.
                 </td>
               </tr>
               <tr>
-                <td className="p-3.5 font-bold text-slate-900 bg-slate-50 border-r border-slate-200">
+                <td className="p-3.5 font-bold text-white bg-[#0D0B14] border-r border-[#2A2342]">
                   Compliance & Grant Audit
                 </td>
-                <td className="p-3.5 border-r border-slate-200 text-slate-900 font-medium">
+                <td className="p-3.5 border-r border-[#2A2342] text-[#F7F7F8] font-medium">
                   Complete documentation, serial registers, and AIM compliance reports prepared for submission.
                 </td>
-                <td className="p-3.5 text-slate-500">
+                <td className="p-3.5 text-[#7468A0]">
                   Institute administrators must manually compile fragmented bills and risk audit delays.
                 </td>
               </tr>
               <tr>
-                <td className="p-3.5 font-bold text-slate-900 bg-slate-50 border-r border-slate-200">
+                <td className="p-3.5 font-bold text-white bg-[#0D0B14] border-r border-[#2A2342]">
                   Continuous Project Support
                 </td>
-                <td className="p-3.5 border-r border-slate-200 text-slate-900 font-medium">
+                <td className="p-3.5 border-r border-[#2A2342] text-[#F7F7F8] font-medium">
                   Dedicated regional technical mentor on call for school innovation competitions and hackathons.
                 </td>
-                <td className="p-3.5 text-slate-500">
+                <td className="p-3.5 text-[#7468A0]">
                   Vendors disappear post-delivery; hardware sits idle in storage cabinets.
                 </td>
               </tr>
@@ -379,26 +377,26 @@ export default function AtlSetupPage() {
       </section>
 
       {/* Bottom CTA Strip */}
-      <section className="bg-slate-900 text-white py-12 px-4 sm:px-6 border-t border-slate-800">
-        <div className="max-w-container-wide mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2">
-            <h3 className="text-xl md:text-2xl font-bold tracking-tight">
+      <section className="bg-black py-12 px-4 sm:px-6 border-t border-[#2A2342]">
+        <div className="max-w-stage mx-auto glass-panel p-8 sm:p-10 border-[#2A2342] glow-line-top flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <h3 className="text-xl md:text-2xl font-bold tracking-tight text-white">
               Ready to Establish an Atal Tinkering Lab on Your Campus?
             </h3>
-            <p className="text-xs text-slate-400 max-w-xl">
+            <p className="text-xs text-[#8B8988] max-w-xl">
               Our operations team responds within 1 to 2 working days with a detailed room plan, hardware bill of materials, and transparent pricing.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link
               href="/contact?need=atl_lab"
-              className="px-6 py-3 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs tracking-wider uppercase transition-colors text-center"
+              className="btn-primary-violet px-6 py-3 rounded-full text-xs font-semibold tracking-wider uppercase text-center"
             >
               Request Lab Implementation RFP
             </Link>
             <Link
               href="/workshops"
-              className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs tracking-wider uppercase border border-slate-700 transition-colors text-center"
+              className="btn-secondary-dark px-6 py-3 rounded-full text-xs font-semibold tracking-wider uppercase text-center"
             >
               Explore Short Workshops
             </Link>

@@ -8,10 +8,7 @@ import {
   CheckCircle2,
   AlertCircle,
   Clock,
-  Mail,
-  MapPin,
-  HelpCircle,
-  ExternalLink,
+  Sparkles,
 } from "lucide-react";
 
 export default function ContactForm() {
@@ -47,7 +44,6 @@ export default function ContactForm() {
     setLoading(true);
 
     try {
-      // In development / standard client, supply test token; Turnstile script in production overrides
       const payload = {
         ...formData,
         turnstileToken: "cf_client_verified_token",
@@ -75,28 +71,28 @@ export default function ContactForm() {
 
   if (successData) {
     return (
-      <div className="bg-white border border-emerald-300 p-8 shadow-sm space-y-4">
-        <div className="flex items-center space-x-3 text-emerald-700">
-          <div className="p-2 bg-emerald-100 rounded-none border border-emerald-300">
-            <CheckCircle2 className="w-6 h-6 text-emerald-700" />
+      <div className="glass-panel border border-[#45B558]/40 p-8 shadow-glow space-y-4">
+        <div className="flex items-center space-x-3 text-[#45B558]">
+          <div className="p-2 bg-[#17132A] rounded-xl border border-[#45B558]/40">
+            <CheckCircle2 className="w-6 h-6 text-[#45B558]" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-slate-950">Enquiry Registered Successfully</h3>
-            <p className="text-xs text-slate-500 font-mono">REFERENCE ID: {successData.id}</p>
+            <h3 className="text-lg font-bold text-white">Enquiry Registered Successfully</h3>
+            <p className="text-xs text-[#7468A0] font-mono">REFERENCE ID: {successData.id}</p>
           </div>
         </div>
 
-        <p className="text-xs text-slate-700 leading-relaxed">
+        <p className="text-xs text-[#8B8988] leading-relaxed">
           {successData.message}
         </p>
 
-        <div className="bg-slate-50 border border-slate-200 p-4 text-xs space-y-2 text-slate-600">
+        <div className="bg-[#0D0B14] border border-[#2A2342] p-4 rounded-xl text-xs space-y-2 text-[#8B8988]">
           <div className="flex items-center space-x-2">
-            <Clock className="w-4 h-4 text-teal-600 shrink-0" />
-            <span className="font-semibold text-slate-900">Standard SLA: 1 to 2 Working Days</span>
+            <Clock className="w-4 h-4 text-[#C9A3FF] shrink-0" />
+            <span className="font-semibold text-white">Standard SLA: 1 to 2 Working Days</span>
           </div>
-          <p className="text-[11px] text-slate-500">
-            A confirmation email has been dispatched to <span className="font-semibold text-slate-800">{formData.email}</span>. A technical coordinator will reach out via <span className="font-semibold text-slate-800">{formData.phone}</span>.
+          <p className="text-[11px] text-[#7468A0]">
+            A confirmation email has been dispatched to <span className="font-semibold text-[#F7F7F8]">{formData.email}</span>. A technical coordinator will reach out via <span className="font-semibold text-[#F7F7F8]">{formData.phone}</span>.
           </p>
         </div>
 
@@ -117,13 +113,13 @@ export default function ContactForm() {
                 consent: false,
               });
             }}
-            className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors"
+            className="btn-secondary-dark px-4 py-2 rounded-xl text-xs font-semibold"
           >
             Submit Another Request
           </button>
           <Link
             href="/"
-            className="px-4 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 transition-colors text-center"
+            className="btn-primary-violet px-5 py-2 rounded-xl text-xs font-semibold text-center"
           >
             Return to Homepage
           </Link>
@@ -133,24 +129,24 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border border-slate-300 p-6 sm:p-8 shadow-sm space-y-5">
-      <div className="border-b border-slate-200 pb-3">
-        <h2 className="text-lg font-bold text-slate-950">Institutional Request Form</h2>
-        <p className="text-xs text-slate-500">
-          No account or login required. Direct dispatch to Unibotics operations.
+    <form onSubmit={handleSubmit} className="glass-panel p-6 sm:p-8 border border-[#2A2342] glow-line-top space-y-5">
+      <div className="border-b border-[#2A2342] pb-3">
+        <h2 className="text-lg font-bold text-white">Institutional Request Form</h2>
+        <p className="text-xs text-[#8B8988]">
+          No account or login required. Direct dispatch to Unibotics engineering team.
         </p>
       </div>
 
       {errorMsg && (
-        <div className="p-3 bg-red-50 border border-red-200 text-xs text-red-800 flex items-start space-x-2">
-          <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+        <div className="p-3 bg-[#17132A] border border-[#F03B2A]/40 text-xs text-[#F03B2A] rounded-xl flex items-start space-x-2">
+          <AlertCircle className="w-4 h-4 text-[#F03B2A] shrink-0 mt-0.5" />
           <span>{errorMsg}</span>
         </div>
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
             Full Name *
           </label>
           <input
@@ -159,12 +155,12 @@ export default function ContactForm() {
             placeholder="Prof. / Dr. / Mr. / Ms."
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+            className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
             Organisation / Institute Name
           </label>
           <input
@@ -172,31 +168,31 @@ export default function ContactForm() {
             placeholder="School or College Name"
             value={formData.organisation}
             onChange={(e) => setFormData({ ...formData, organisation: e.target.value })}
-            className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+            className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
             Campus Classification *
           </label>
           <select
             value={formData.instituteType}
             onChange={(e) => setFormData({ ...formData, instituteType: e.target.value })}
-            className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+            className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
           >
-            <option value="school">K-12 School (CBSE / ICSE / State)</option>
-            <option value="iti">Industrial Training Institute (ITI)</option>
-            <option value="diploma">Polytechnic / Diploma College</option>
-            <option value="engineering">Engineering College / University</option>
-            <option value="other">Other Educational Entity</option>
+            <option value="school" className="bg-[#0D0B14] text-white">K-12 School (CBSE / ICSE / State)</option>
+            <option value="iti" className="bg-[#0D0B14] text-white">Industrial Training Institute (ITI)</option>
+            <option value="diploma" className="bg-[#0D0B14] text-white">Polytechnic / Diploma College</option>
+            <option value="engineering" className="bg-[#0D0B14] text-white">Engineering College / University</option>
+            <option value="other" className="bg-[#0D0B14] text-white">Other Educational Entity</option>
           </select>
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
             City / District, State *
           </label>
           <input
@@ -205,14 +201,14 @@ export default function ContactForm() {
             placeholder="e.g. Kurukshetra, Haryana"
             value={formData.city}
             onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-            className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+            className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
             Official Email Address *
           </label>
           <input
@@ -221,12 +217,12 @@ export default function ContactForm() {
             placeholder="coordinator@institution.edu.in"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+            className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
             Contact Phone Number *
           </label>
           <input
@@ -235,30 +231,30 @@ export default function ContactForm() {
             placeholder="+91 98765 43210"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+            className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+        <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
           Primary Requirement *
         </label>
         <select
           value={formData.need}
           onChange={(e) => setFormData({ ...formData, need: e.target.value })}
-          className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+          className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
         >
-          <option value="atl_lab">Atal Tinkering Lab Setup (Turnkey Packages P1-P4)</option>
-          <option value="workshop">Technical STEM Workshop (2, 5, or 7 Days)</option>
-          <option value="teacher_training">Faculty Development & Teacher Enablement</option>
-          <option value="skill_development">NSDC / Skill India Vocational Program</option>
-          <option value="other">Custom Lab Equipment / Innovation Challenge</option>
+          <option value="atl_lab" className="bg-[#0D0B14] text-white">Atal Tinkering Lab Setup (Turnkey Packages P1-P4)</option>
+          <option value="workshop" className="bg-[#0D0B14] text-white">Technical STEM Workshop (2, 5, or 7 Days)</option>
+          <option value="teacher_training" className="bg-[#0D0B14] text-white">Faculty Development & Teacher Enablement</option>
+          <option value="skill_development" className="bg-[#0D0B14] text-white">NSDC / Skill India Vocational Program</option>
+          <option value="other" className="bg-[#0D0B14] text-white">Custom Lab Equipment / Innovation Challenge</option>
         </select>
       </div>
 
       <div>
-        <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+        <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
           Specific Scope / Questions (Optional)
         </label>
         <textarea
@@ -266,23 +262,23 @@ export default function ContactForm() {
           placeholder="Student cohort size, expected timeline, or specific curriculum mapping goals..."
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+          className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
         />
       </div>
 
       {/* Consent Checkbox */}
       <div className="pt-1">
-        <label className="flex items-start space-x-2 text-xs text-slate-600 cursor-pointer">
+        <label className="flex items-start space-x-2 text-xs text-[#8B8988] cursor-pointer">
           <input
             type="checkbox"
             required
             checked={formData.consent}
             onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-            className="mt-0.5 rounded-none border-slate-300 text-slate-900 focus:ring-0"
+            className="mt-0.5 rounded border-[#7468A0] text-[#A020FF] focus:ring-0 bg-[#0D0B14]"
           />
           <span>
             I acknowledge that this enquiry will be processed by Unibotics India under our{" "}
-            <Link href="/privacy" className="text-teal-700 underline hover:text-teal-800">
+            <Link href="/privacy" className="text-[#C9A3FF] underline hover:text-white">
               Privacy Policy
             </Link>{" "}
             (DPDP Act 2023 compliant). Data is never sold or shared.
@@ -293,7 +289,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-3 px-4 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 transition-colors disabled:opacity-50"
+        className="btn-primary-violet w-full py-3 px-4 rounded-xl font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 transition-all disabled:opacity-50"
       >
         <Send className="w-4 h-4" />
         <span>{loading ? "Registering Enquiry..." : "Submit Institutional Enquiry"}</span>

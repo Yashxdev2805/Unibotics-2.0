@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import ContactForm from "./ContactForm";
-import { ShieldCheck, Mail, MapPin, Clock, HelpCircle, PhoneCall } from "lucide-react";
+import { ShieldCheck, Mail, MapPin, Clock, HelpCircle } from "lucide-react";
 
 export const metadata = {
   title: "Contact & Institutional RFP | Unibotics India",
@@ -11,27 +11,27 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="flex-1 flex flex-col bg-slate-50 text-slate-900">
+    <div className="flex-1 flex flex-col relative text-[#F7F7F8]">
       {/* Breadcrumb Navigation */}
-      <section className="bg-white border-b border-slate-200 py-3 px-4 sm:px-6 text-xs text-slate-500">
-        <div className="max-w-container-wide mx-auto flex items-center space-x-2">
-          <Link href="/" className="hover:text-slate-900">
+      <section className="border-b border-[#2A2342] bg-[#0D0B14]/60 py-3 px-4 sm:px-6 text-xs text-[#8B8988]">
+        <div className="max-w-stage mx-auto flex items-center space-x-2">
+          <Link href="/" className="hover:text-white transition-colors">
             Home
           </Link>
-          <span>/</span>
-          <span className="font-semibold text-slate-900">Institutional Inquiries & Quotes</span>
+          <span className="text-[#2A2342]">/</span>
+          <span className="font-semibold text-white">Institutional Inquiries & Quotes</span>
         </div>
       </section>
 
       {/* Main Dual-Pane Section */}
-      <section className="py-12 md:py-16 px-4 sm:px-6 max-w-container-wide mx-auto w-full">
+      <section className="py-12 md:py-16 px-4 sm:px-6 max-w-stage mx-auto w-full mb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: Frictionless Enquiry Form */}
           <div className="lg:col-span-7">
             <Suspense
               fallback={
-                <div className="bg-white border border-slate-300 p-8 text-center text-xs text-slate-500">
+                <div className="glass-panel p-8 text-center text-xs text-[#8B8988]">
                   Loading institutional enquiry gateway...
                 </div>
               }
@@ -44,86 +44,81 @@ export default function ContactPage() {
           <div className="lg:col-span-5 space-y-6">
             
             {/* SLA Commitment Card */}
-            <div className="bg-slate-900 text-white p-6 border border-slate-800 shadow-sm space-y-3">
-              <div className="flex items-center space-x-2 text-emerald-400 text-xs font-mono font-semibold">
+            <div className="glass-panel p-6 border border-[#2A2342] glow-line-top space-y-3">
+              <div className="flex items-center space-x-2 text-[#45B558] text-xs font-mono font-semibold">
                 <Clock className="w-4 h-4" />
                 <span>OFFICIAL RESPONSE SLA</span>
               </div>
               <h3 className="text-lg font-bold text-white tracking-tight">
                 1 to 2 Working Days Guarantee
               </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className="text-xs text-[#8B8988] leading-relaxed">
                 Institutional requests are routed directly to technical program directors in Kurukshetra. We provide structured budget estimates, hardware bills of materials, and scheduling timelines.
               </p>
-              <div className="pt-2 border-t border-slate-800 text-[11px] font-mono text-slate-400">
-                MONITORING PROTOCOL: IMMEDIATE ADMIN ALERT VIA RESEND
+              <div className="pt-2 border-t border-[#2A2342] text-[11px] font-mono text-[#7468A0]">
+                MONITORING PROTOCOL: IMMEDIATE ADMIN ALERT
               </div>
             </div>
 
-            {/* Physical Headquarters Card */}
-            <div className="bg-white border border-slate-300 p-6 shadow-sm space-y-4">
-              <div className="border-b border-slate-200 pb-2">
-                <span className="text-xs font-bold text-slate-900 uppercase tracking-wider block">
-                  Regional Operations Office
-                </span>
-              </div>
+            {/* Direct Contact Directory Card */}
+            <div className="glass-panel p-6 border border-[#2A2342] space-y-4 text-xs text-[#8B8988]">
+              <span className="font-mono text-[10px] text-[#7468A0] uppercase font-bold tracking-wider block">
+                Direct Administrative Contacts
+              </span>
 
-              <div className="space-y-3 text-xs text-slate-700">
-                <div className="flex items-start space-x-2.5">
-                  <MapPin className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+              <div className="space-y-3">
+                <div className="flex items-start space-x-3">
+                  <MapPin className="w-4 h-4 text-[#C9A3FF] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold text-slate-900 block">Kurukshetra Headquarters</span>
-                    <span className="text-slate-500">Unibotics Services Pvt. Ltd.</span>
-                    <p className="text-slate-500">Kurukshetra, Haryana 136118, India</p>
+                    <span className="font-semibold text-white block">
+                      Operations Headquarters:
+                    </span>
+                    <p className="leading-relaxed">
+                      Unibotics Services Pvt. Ltd.<br />
+                      Kurukshetra, Haryana 136118, India
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-2.5">
-                  <Mail className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+                <div className="flex items-start space-x-3">
+                  <Mail className="w-4 h-4 text-[#C9A3FF] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold text-slate-900 block">Official Inquiries Email</span>
+                    <span className="font-semibold text-white block">
+                      Institutional RFP Inbox:
+                    </span>
                     <a
                       href="mailto:directorunibotics@gmail.com"
-                      className="text-teal-700 hover:underline font-mono"
+                      className="text-[#C9A3FF] hover:underline font-mono"
                     >
                       directorunibotics@gmail.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-2.5">
-                  <PhoneCall className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+                <div className="flex items-start space-x-3">
+                  <ShieldCheck className="w-4 h-4 text-[#45B558] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold text-slate-900 block">Operational Hours</span>
-                    <p className="text-slate-500">Monday to Saturday: 09:00 – 18:00 IST</p>
+                    <span className="font-semibold text-white block">
+                      Compliance Verification:
+                    </span>
+                    <p className="leading-relaxed">
+                      Registered MSME & Educational Infrastructure Partner under Indian business regulations.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Quick Institutional FAQ */}
-            <div className="bg-white border border-slate-300 p-6 shadow-sm space-y-4">
-              <div className="flex items-center space-x-2 border-b border-slate-200 pb-2">
-                <HelpCircle className="w-4 h-4 text-teal-600" />
-                <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">
-                  Procurement Questions
+            {/* Helpful Scope Notice */}
+            <div className="glass-panel p-5 border border-[#2A2342] flex items-start space-x-3 text-xs text-[#8B8988]">
+              <HelpCircle className="w-5 h-5 text-[#C9A3FF] shrink-0 mt-0.5" />
+              <div>
+                <span className="font-bold text-white block">
+                  Planning an ATL Grant Submission?
                 </span>
-              </div>
-
-              <div className="space-y-3 text-xs">
-                <div>
-                  <span className="font-semibold text-slate-900 block">How are proposals billed?</span>
-                  <p className="text-slate-500 text-[11px] leading-relaxed mt-0.5">
-                    We issue institutional GST proforma invoices with full component serial number documentation for school and college audits.
-                  </p>
-                </div>
-
-                <div>
-                  <span className="font-semibold text-slate-900 block">Who supplies the hardware?</span>
-                  <p className="text-slate-500 text-[11px] leading-relaxed mt-0.5">
-                    All kits, microcontrollers, 3D printers, and sensors are transported and supplied directly by Unibotics. Host campuses provide only basic lab furniture and power points.
-                  </p>
-                </div>
+                <p className="mt-1 leading-relaxed">
+                  Mention your application stage in the message. We provide formal quotation formats aligned to the NITI Aayog portal upload requirements.
+                </p>
               </div>
             </div>
 

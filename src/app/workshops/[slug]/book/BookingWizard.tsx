@@ -5,13 +5,11 @@ import Link from "next/link";
 import {
   Calendar,
   Building2,
-  User,
   CheckCircle2,
   AlertCircle,
   ArrowRight,
   ArrowLeft,
   Clock,
-  ShieldCheck,
 } from "lucide-react";
 import type { WorkshopItem } from "@/lib/data/workshops";
 
@@ -107,43 +105,43 @@ export default function BookingWizard({ workshop }: Props) {
 
   if (successData) {
     return (
-      <div className="bg-white border border-emerald-300 p-8 shadow-sm space-y-4">
-        <div className="flex items-center space-x-3 text-emerald-700">
-          <div className="p-2 bg-emerald-100 border border-emerald-300">
-            <CheckCircle2 className="w-6 h-6 text-emerald-700" />
+      <div className="glass-panel border border-[#45B558]/40 p-8 shadow-glow space-y-4">
+        <div className="flex items-center space-x-3 text-[#45B558]">
+          <div className="p-2 bg-[#17132A] rounded-xl border border-[#45B558]/40">
+            <CheckCircle2 className="w-6 h-6 text-[#45B558]" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-slate-950">Workshop RFP Successfully Submitted</h3>
-            <p className="text-xs text-slate-500 font-mono">BOOKING ID: {successData.id}</p>
+            <h3 className="text-lg font-bold text-white">Workshop RFP Successfully Submitted</h3>
+            <p className="text-xs text-[#7468A0] font-mono">BOOKING ID: {successData.id}</p>
           </div>
         </div>
 
-        <p className="text-xs text-slate-700 leading-relaxed">
+        <p className="text-xs text-[#8B8988] leading-relaxed">
           {successData.message}
         </p>
 
-        <div className="bg-slate-50 border border-slate-200 p-4 text-xs space-y-2 text-slate-700">
+        <div className="bg-[#0D0B14] border border-[#2A2342] p-4 rounded-xl text-xs space-y-2 text-[#8B8988]">
           <div className="flex items-center space-x-2">
-            <Clock className="w-4 h-4 text-teal-600 shrink-0" />
-            <span className="font-semibold text-slate-900">Next Operational Steps:</span>
+            <Clock className="w-4 h-4 text-[#C9A3FF] shrink-0" />
+            <span className="font-semibold text-white">Next Operational Steps:</span>
           </div>
-          <ul className="list-disc pl-5 space-y-1 text-slate-600 text-[11px]">
+          <ul className="list-disc pl-5 space-y-1 text-[#8B8988] text-[11px]">
             <li>An academic coordinator will verify mentor calendar availability for {formData.preferredDates}.</li>
-            <li>A formal institutional quotation with hardware kit allocation will be emailed to <strong className="text-slate-900">{formData.requesterEmail}</strong>.</li>
-            <li>We will confirm travel logistics to <strong className="text-slate-900">{formData.city}</strong> within 1 to 2 working days.</li>
+            <li>A formal institutional quotation with hardware kit allocation will be emailed to <strong className="text-white">{formData.requesterEmail}</strong>.</li>
+            <li>We will confirm travel logistics to <strong className="text-white">{formData.city}</strong> within 1 to 2 working days.</li>
           </ul>
         </div>
 
         <div className="pt-2 flex flex-col sm:flex-row gap-3">
           <Link
             href="/workshops"
-            className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors text-center"
+            className="btn-secondary-dark px-4 py-2 rounded-xl text-xs font-semibold text-center"
           >
             Explore Other Modules
           </Link>
           <Link
             href="/"
-            className="px-4 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 transition-colors text-center"
+            className="btn-primary-violet px-5 py-2 rounded-xl text-xs font-semibold text-center"
           >
             Return to Homepage
           </Link>
@@ -153,23 +151,23 @@ export default function BookingWizard({ workshop }: Props) {
   }
 
   return (
-    <div className="bg-white border border-slate-300 shadow-sm">
+    <div className="glass-panel border border-[#2A2342] glow-line-top overflow-hidden">
       {/* Progress Stepper Bar */}
-      <div className="border-b border-slate-200 bg-slate-50 px-6 py-4 flex items-center justify-between text-xs font-mono">
+      <div className="border-b border-[#2A2342] bg-[#08060E] px-6 py-4 flex items-center justify-between text-xs font-mono">
         <div className="flex items-center space-x-2">
-          <span className="font-bold text-slate-900">REQUEST WORKSHOP RFP:</span>
-          <span className="text-slate-600 truncate max-w-xs">{workshop.title}</span>
+          <span className="font-bold text-white">REQUEST WORKSHOP RFP:</span>
+          <span className="text-[#C9A3FF] truncate max-w-xs">{workshop.title}</span>
         </div>
-        <div className="flex items-center space-x-1">
+        <div className="flex items-center space-x-1.5">
           {[1, 2, 3].map((s) => (
             <span
               key={s}
-              className={`w-6 h-6 flex items-center justify-center font-bold text-[11px] border ${
+              className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs border ${
                 step === s
-                  ? "bg-slate-900 text-white border-slate-900"
+                  ? "bg-[#17132A] text-white border-[#A020FF] shadow-glow"
                   : step > s
-                  ? "bg-teal-600 text-white border-teal-600"
-                  : "bg-slate-200 text-slate-500 border-slate-300"
+                  ? "bg-[#45B558]/20 text-[#45B558] border-[#45B558]/40"
+                  : "bg-[#0D0B14] text-[#7468A0] border-[#2A2342]"
               }`}
             >
               {s}
@@ -180,8 +178,8 @@ export default function BookingWizard({ workshop }: Props) {
 
       <div className="p-6 sm:p-8">
         {errorMsg && (
-          <div className="mb-6 p-3 bg-red-50 border border-red-200 text-xs text-red-800 flex items-start space-x-2">
-            <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+          <div className="mb-6 p-3 bg-[#17132A] border border-[#F03B2A]/40 text-xs text-[#F03B2A] rounded-xl flex items-start space-x-2">
+            <AlertCircle className="w-4 h-4 text-[#F03B2A] shrink-0 mt-0.5" />
             <span>{errorMsg}</span>
           </div>
         )}
@@ -189,45 +187,45 @@ export default function BookingWizard({ workshop }: Props) {
         {/* STEP 1: Workshop & Dates */}
         {step === 1 && (
           <div className="space-y-5">
-            <div className="border-b border-slate-200 pb-2">
-              <h3 className="text-base font-bold text-slate-950 uppercase tracking-wider font-mono">
+            <div className="border-b border-[#2A2342] pb-2">
+              <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono">
                 Step 1: Program Duration & Dates
               </h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-[#8B8988]">
                 Module: {workshop.title} ({workshop.days} Days Intensive).
               </p>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
                 Preferred Dates / Academic Window *
               </label>
               <div className="relative">
-                <Calendar className="w-4 h-4 text-slate-400 absolute left-3 top-3 pointer-events-none" />
+                <Calendar className="w-4 h-4 text-[#7468A0] absolute left-3.5 top-3.5 pointer-events-none" />
                 <input
                   type="text"
                   required
                   placeholder="e.g. 15 Nov to 20 Nov 2026, or First week of December"
                   value={formData.preferredDates}
                   onChange={(e) => setFormData({ ...formData, preferredDates: e.target.value })}
-                  className="w-full pl-9 pr-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
                 Campus Venue Facility
               </label>
               <select
                 value={formData.venueType}
                 onChange={(e) => setFormData({ ...formData, venueType: e.target.value })}
-                className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+                className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
               >
-                <option value="College Electronics Lab">College Electronics / Embedded Lab</option>
-                <option value="School Atal Tinkering Lab">School Atal Tinkering Lab (ATL)</option>
-                <option value="Computer Lab with Projector">Computer Center with Display Projector</option>
-                <option value="Auditorium / Multipurpose Hall">Indoor Auditorium / Multipurpose Hall</option>
+                <option value="College Electronics Lab" className="bg-[#0D0B14] text-white">College Electronics / Embedded Lab</option>
+                <option value="School Atal Tinkering Lab" className="bg-[#0D0B14] text-white">School Atal Tinkering Lab (ATL)</option>
+                <option value="Computer Lab with Projector" className="bg-[#0D0B14] text-white">Computer Center with Display Projector</option>
+                <option value="Auditorium / Multipurpose Hall" className="bg-[#0D0B14] text-white">Indoor Auditorium / Multipurpose Hall</option>
               </select>
             </div>
 
@@ -237,7 +235,7 @@ export default function BookingWizard({ workshop }: Props) {
                 onClick={() => {
                   if (validateStep1()) setStep(2);
                 }}
-                className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs tracking-wider uppercase flex items-center space-x-1.5 transition-colors"
+                className="btn-primary-violet px-6 py-2.5 rounded-xl text-xs font-semibold tracking-wider uppercase flex items-center space-x-1.5"
               >
                 <span>Continue to Step 2</span>
                 <ArrowRight className="w-4 h-4" />
@@ -249,18 +247,18 @@ export default function BookingWizard({ workshop }: Props) {
         {/* STEP 2: Institute & Cohort Size */}
         {step === 2 && (
           <div className="space-y-5">
-            <div className="border-b border-slate-200 pb-2">
-              <h3 className="text-base font-bold text-slate-950 uppercase tracking-wider font-mono">
+            <div className="border-b border-[#2A2342] pb-2">
+              <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono">
                 Step 2: Campus Details & Student Cohort
               </h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-[#8B8988]">
                 We use student counts to calculate hardware component kit requirements.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
                   Institute / College Name *
                 </label>
                 <input
@@ -269,12 +267,12 @@ export default function BookingWizard({ workshop }: Props) {
                   placeholder="e.g. Haryana Engineering College"
                   value={formData.instituteName}
                   onChange={(e) => setFormData({ ...formData, instituteName: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+                  className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
                   Campus City, State *
                 </label>
                 <input
@@ -283,13 +281,13 @@ export default function BookingWizard({ workshop }: Props) {
                   placeholder="e.g. Kurukshetra, Haryana"
                   value={formData.city}
                   onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+                  className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
                 Estimated Participant Count * (Min 10)
               </label>
               <input
@@ -299,9 +297,9 @@ export default function BookingWizard({ workshop }: Props) {
                 required
                 value={formData.studentCount}
                 onChange={(e) => setFormData({ ...formData, studentCount: Number(e.target.value) })}
-                className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors font-mono"
+                className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors font-mono"
               />
-              <span className="text-[11px] text-slate-500 mt-1 block">
+              <span className="text-[11px] text-[#7468A0] mt-1 block">
                 Standard team ratio: 1 complete hardware development kit per 3 to 4 students.
               </span>
             </div>
@@ -310,7 +308,7 @@ export default function BookingWizard({ workshop }: Props) {
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs tracking-wider uppercase flex items-center space-x-1.5 transition-colors border border-slate-300"
+                className="btn-secondary-dark px-5 py-2.5 rounded-xl text-xs font-semibold uppercase flex items-center space-x-1.5"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back</span>
@@ -320,7 +318,7 @@ export default function BookingWizard({ workshop }: Props) {
                 onClick={() => {
                   if (validateStep2()) setStep(3);
                 }}
-                className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs tracking-wider uppercase flex items-center space-x-1.5 transition-colors"
+                className="btn-primary-violet px-6 py-2.5 rounded-xl text-xs font-semibold uppercase flex items-center space-x-1.5"
               >
                 <span>Continue to Step 3</span>
                 <ArrowRight className="w-4 h-4" />
@@ -332,17 +330,17 @@ export default function BookingWizard({ workshop }: Props) {
         {/* STEP 3: Contact & Submit */}
         {step === 3 && (
           <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="border-b border-slate-200 pb-2">
-              <h3 className="text-base font-bold text-slate-950 uppercase tracking-wider font-mono">
+            <div className="border-b border-[#2A2342] pb-2">
+              <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono">
                 Step 3: Coordinator Details & Review
               </h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-[#8B8988]">
                 Where should we send the written quotation and syllabus itinerary?
               </p>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
                 Coordinator Full Name *
               </label>
               <input
@@ -351,13 +349,13 @@ export default function BookingWizard({ workshop }: Props) {
                 placeholder="Prof. / Dr. / Coordinator Name"
                 value={formData.requesterName}
                 onChange={(e) => setFormData({ ...formData, requesterName: e.target.value })}
-                className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+                className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
                   Official Email Address *
                 </label>
                 <input
@@ -366,12 +364,12 @@ export default function BookingWizard({ workshop }: Props) {
                   placeholder="coordinator@institution.ac.in"
                   value={formData.requesterEmail}
                   onChange={(e) => setFormData({ ...formData, requesterEmail: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+                  className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
                   Direct Contact Number *
                 </label>
                 <input
@@ -380,30 +378,30 @@ export default function BookingWizard({ workshop }: Props) {
                   placeholder="+91 98765 43210"
                   value={formData.requesterPhone}
                   onChange={(e) => setFormData({ ...formData, requesterPhone: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors font-mono"
+                  className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors font-mono"
                 />
               </div>
             </div>
 
             {/* Summary Review Card */}
-            <div className="bg-slate-50 border border-slate-200 p-4 text-xs space-y-1">
-              <span className="font-mono text-[10px] text-slate-400 uppercase block font-semibold">
+            <div className="bg-[#0D0B14] border border-[#2A2342] p-4 rounded-xl text-xs space-y-1 text-[#8B8988]">
+              <span className="font-mono text-[10px] text-[#7468A0] uppercase block font-semibold">
                 Booking RFP Summary:
               </span>
-              <p><strong className="text-slate-900">Program:</strong> {workshop.title} ({workshop.days} Days)</p>
-              <p><strong className="text-slate-900">Campus:</strong> {formData.instituteName}, {formData.city}</p>
-              <p><strong className="text-slate-900">Dates:</strong> {formData.preferredDates} • {formData.studentCount} Participants</p>
+              <p><strong className="text-white">Program:</strong> {workshop.title} ({workshop.days} Days)</p>
+              <p><strong className="text-white">Campus:</strong> {formData.instituteName}, {formData.city}</p>
+              <p><strong className="text-white">Dates:</strong> {formData.preferredDates} • {formData.studentCount} Participants</p>
             </div>
 
             {/* Consent */}
             <div>
-              <label className="flex items-start space-x-2 text-xs text-slate-600 cursor-pointer">
+              <label className="flex items-start space-x-2 text-xs text-[#8B8988] cursor-pointer">
                 <input
                   type="checkbox"
                   required
                   checked={formData.consent}
                   onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-                  className="mt-0.5 rounded-none border-slate-300 text-slate-900 focus:ring-0"
+                  className="mt-0.5 rounded border-[#7468A0] text-[#A020FF] focus:ring-0 bg-[#0D0B14]"
                 />
                 <span>
                   I confirm that I am authorized to request an institutional workshop proposal on behalf of {formData.instituteName || "this institution"}.
@@ -415,7 +413,7 @@ export default function BookingWizard({ workshop }: Props) {
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs tracking-wider uppercase flex items-center space-x-1.5 transition-colors border border-slate-300"
+                className="btn-secondary-dark px-5 py-2.5 rounded-xl text-xs font-semibold uppercase flex items-center space-x-1.5"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Back</span>
@@ -423,7 +421,7 @@ export default function BookingWizard({ workshop }: Props) {
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs tracking-wider uppercase flex items-center space-x-1.5 transition-colors disabled:opacity-50"
+                className="btn-primary-violet px-6 py-2.5 rounded-xl text-xs font-semibold uppercase flex items-center space-x-1.5 disabled:opacity-50"
               >
                 <span>{loading ? "Submitting RFP..." : "Submit Booking RFP"}</span>
                 <ArrowRight className="w-4 h-4" />

@@ -108,25 +108,25 @@ export default function ApplicationForm() {
 
   if (successData) {
     return (
-      <div className="bg-white border border-emerald-300 p-8 shadow-sm space-y-4">
-        <div className="flex items-center space-x-3 text-emerald-700">
-          <div className="p-2 bg-emerald-100 rounded-none border border-emerald-300">
-            <CheckCircle2 className="w-6 h-6 text-emerald-700" />
+      <div className="glass-panel border border-[#45B558]/40 p-8 shadow-glow space-y-4">
+        <div className="flex items-center space-x-3 text-[#45B558]">
+          <div className="p-2 bg-[#17132A] rounded-xl border border-[#45B558]/40">
+            <CheckCircle2 className="w-6 h-6 text-[#45B558]" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-slate-950">Application Registered</h3>
-            <p className="text-xs text-slate-500 font-mono">APPLICATION REF: {successData.id}</p>
+            <h3 className="text-lg font-bold text-white">Application Registered</h3>
+            <p className="text-xs text-[#7468A0] font-mono">APPLICATION REF: {successData.id}</p>
           </div>
         </div>
 
-        <p className="text-xs text-slate-700 leading-relaxed">
+        <p className="text-xs text-[#8B8988] leading-relaxed">
           {successData.message}
         </p>
 
-        <div className="bg-slate-50 border border-slate-200 p-4 text-xs text-slate-600 space-y-1">
-          <span className="font-semibold text-slate-900 block">Next Steps:</span>
+        <div className="bg-[#0D0B14] border border-[#2A2342] p-4 rounded-xl text-xs text-[#8B8988] space-y-1">
+          <span className="font-semibold text-white block">Next Steps:</span>
           <p>
-            Our operations team conducts candidate reviews weekly. Shortlisted mentors and partners are contacted via <span className="font-semibold text-slate-800">{formData.email}</span> for technical interviews and credentials verification.
+            Our operations team conducts candidate reviews weekly. Shortlisted mentors and partners are contacted via <span className="font-semibold text-white">{formData.email}</span> for technical interviews and credentials verification.
           </p>
         </div>
 
@@ -145,13 +145,13 @@ export default function ApplicationForm() {
                 consent: false,
               });
             }}
-            className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors"
+            className="btn-secondary-dark px-4 py-2 rounded-xl text-xs font-semibold"
           >
             Submit Another Application
           </button>
           <Link
             href="/"
-            className="px-4 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 transition-colors text-center"
+            className="btn-primary-violet px-5 py-2 rounded-xl text-xs font-semibold text-center"
           >
             Return to Homepage
           </Link>
@@ -164,7 +164,7 @@ export default function ApplicationForm() {
     <div className="space-y-8">
       {/* Step 1: Select Application Role */}
       <div>
-        <label className="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">
+        <label className="block text-xs font-bold text-white uppercase tracking-wider mb-3">
           Step 1: Select Candidate Category
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -176,27 +176,29 @@ export default function ApplicationForm() {
                 key={opt.type}
                 type="button"
                 onClick={() => setSelectedRole(opt.type)}
-                className={`p-4 text-left border transition-all flex flex-col justify-between ${
+                className={`p-5 rounded-2xl text-left border transition-all flex flex-col justify-between ${
                   isSelected
-                    ? "bg-slate-900 text-white border-slate-900 shadow-md ring-1 ring-slate-900"
-                    : "bg-white text-slate-900 border-slate-300 hover:border-slate-400"
+                    ? "bg-[#17132A] text-white border-[#A020FF] shadow-glow"
+                    : "glass-panel text-[#8B8988] border-[#2A2342] hover:border-[#7468A0]"
                 }`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <Icon className={`w-5 h-5 ${isSelected ? "text-teal-400" : "text-slate-600"}`} />
+                  <div className="flex items-center justify-between mb-3">
+                    <div className={`p-2 rounded-xl ${isSelected ? "bg-[#0D0B14] text-[#C9A3FF]" : "bg-[#17132A] text-[#8B8988]"}`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
                     <span
-                      className={`text-[10px] font-mono px-1.5 py-0.5 border ${
+                      className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${
                         isSelected
-                          ? "bg-slate-800 border-slate-700 text-teal-300"
-                          : "bg-slate-50 border-slate-200 text-slate-500"
+                          ? "bg-[#0D0B14] border-[#A020FF]/40 text-[#C9A3FF]"
+                          : "bg-[#0D0B14] border-[#2A2342] text-[#7468A0]"
                       }`}
                     >
                       {opt.badge}
                     </span>
                   </div>
-                  <h4 className="font-bold text-sm mb-1">{opt.title}</h4>
-                  <p className={`text-xs leading-relaxed ${isSelected ? "text-slate-300" : "text-slate-600"}`}>
+                  <h4 className="font-bold text-sm text-white mb-1">{opt.title}</h4>
+                  <p className="text-xs text-[#8B8988] leading-relaxed">
                     {opt.desc}
                   </p>
                 </div>
@@ -207,26 +209,26 @@ export default function ApplicationForm() {
       </div>
 
       {/* Step 2: Application Details Form */}
-      <form onSubmit={handleSubmit} className="bg-white border border-slate-300 p-6 sm:p-8 shadow-sm space-y-4">
-        <div className="border-b border-slate-200 pb-3 mb-2">
-          <h3 className="text-base font-bold text-slate-950 uppercase tracking-wider font-mono">
+      <form onSubmit={handleSubmit} className="glass-panel p-6 sm:p-8 border border-[#2A2342] glow-line-top space-y-4">
+        <div className="border-b border-[#2A2342] pb-3 mb-2">
+          <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono">
             Step 2: Candidate Information & Credentials
           </h3>
-          <p className="text-xs text-slate-500">
-            Applying as: <span className="font-semibold text-slate-900 uppercase font-mono">{selectedRole.replace("_", " ")}</span>. No password required.
+          <p className="text-xs text-[#8B8988]">
+            Applying as: <span className="font-semibold text-[#C9A3FF] uppercase font-mono">{selectedRole.replace("_", " ")}</span>. No password required.
           </p>
         </div>
 
         {errorMsg && (
-          <div className="p-3 bg-red-50 border border-red-200 text-xs text-red-800 flex items-start space-x-2">
-            <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+          <div className="p-3 bg-[#17132A] border border-[#F03B2A]/40 text-xs text-[#F03B2A] rounded-xl flex items-start space-x-2">
+            <AlertCircle className="w-4 h-4 text-[#F03B2A] shrink-0 mt-0.5" />
             <span>{errorMsg}</span>
           </div>
         )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
               Full Legal Name *
             </label>
             <input
@@ -235,12 +237,12 @@ export default function ApplicationForm() {
               placeholder="Candidate Name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+              className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
               Email Address *
             </label>
             <input
@@ -249,14 +251,14 @@ export default function ApplicationForm() {
               placeholder="name@example.com"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+              className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
               Primary Phone Number *
             </label>
             <input
@@ -265,12 +267,12 @@ export default function ApplicationForm() {
               placeholder="+91 98765 43210"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+              className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+            <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
               Current College / Institute / Company
             </label>
             <input
@@ -278,13 +280,13 @@ export default function ApplicationForm() {
               placeholder="e.g. NIT Kurukshetra, DAV School"
               value={formData.organisation}
               onChange={(e) => setFormData({ ...formData, organisation: e.target.value })}
-              className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+              className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
             Technical Qualification & Specialization *
           </label>
           <input
@@ -293,12 +295,12 @@ export default function ApplicationForm() {
             placeholder="e.g. B.Tech ECE, Robotics Kinematics, Embedded C, 3D CAD"
             value={formData.qualification}
             onChange={(e) => setFormData({ ...formData, qualification: e.target.value })}
-            className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+            className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+          <label className="block text-xs font-semibold text-[#8B8988] uppercase tracking-wider mb-1">
             Prior Project Experience / Profile Link (Optional)
           </label>
           <textarea
@@ -306,18 +308,18 @@ export default function ApplicationForm() {
             placeholder="GitHub, LinkedIn, summary of completed robotics/electronics hardware projects..."
             value={formData.notes}
             onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-            className="w-full px-3 py-2 border border-slate-300 text-sm text-slate-900 bg-slate-50 focus:bg-white focus:border-slate-800 focus:outline-none transition-colors"
+            className="w-full px-3 py-2.5 rounded-xl border border-[#7468A0] text-sm text-white bg-[#0D0B14] focus:bg-[#17132A] focus:border-[#A020FF] focus:outline-none transition-colors"
           />
         </div>
 
         <div className="pt-1">
-          <label className="flex items-start space-x-2 text-xs text-slate-600 cursor-pointer">
+          <label className="flex items-start space-x-2 text-xs text-[#8B8988] cursor-pointer">
             <input
               type="checkbox"
               required
               checked={formData.consent}
               onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-              className="mt-0.5 rounded-none border-slate-300 text-slate-900 focus:ring-0"
+              className="mt-0.5 rounded border-[#7468A0] text-[#A020FF] focus:ring-0 bg-[#0D0B14]"
             />
             <span>
               I confirm that the details provided are accurate and consent to Unibotics reviewing my credentials for candidate selection.
@@ -328,7 +330,7 @@ export default function ApplicationForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 px-4 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 transition-colors disabled:opacity-50"
+          className="btn-primary-violet w-full py-3 px-4 rounded-xl font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 transition-all disabled:opacity-50"
         >
           <Send className="w-4 h-4" />
           <span>{loading ? "Submitting Application..." : "Submit Candidate Application"}</span>
