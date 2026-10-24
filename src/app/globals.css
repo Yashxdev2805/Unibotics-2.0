@@ -3,46 +3,185 @@
 @tailwind utilities;
 
 :root {
-  /* Institutional Palette Tokens */
-  --ink: #090D16;
-  --ink-muted: #475569;
-  --surface: #F8FAFC;
-  --surface-raised: #FFFFFF;
-  --line: #E2E8F0;
-  --brand: #1D4ED8;
-  --brand-hover: #1E40AF;
+  /* Royal Violet Design Tokens (DESIGN.md v2) */
+  --color-bg: #000000;
+  --color-surface: #0D0B14;
+  --color-surface-strong: #17132A;
+  --color-border: #2A2342;
+  --color-border-input: #7468A0;
+  --color-text: #F7F7F8;
+  --color-text-muted: #8B8988;
+  --color-primary: #9312FF;
+  --color-primary-start: #A020FF;
+  --color-primary-end: #7A1CF8;
+  --color-link: #C9A3FF;
+  --color-success: #45B558;
+  --color-warning: #F59E0B;
+  --color-danger: #F03B2A;
+  --color-focus: #F59E0B;
+  --glow-violet: rgba(147, 18, 255, 0.4);
+
+  /* Motion Tokens */
+  --motion-fast: 150ms;
+  --motion-base: 220ms;
+  --motion-out: 120ms;
+  --motion-slow: 400ms;
+  --motion-stagger: 60ms;
+
+  /* Theme mappings for existing tailwind classes */
+  --ink: #F7F7F8;
+  --ink-muted: #8B8988;
+  --surface: #000000;
+  --surface-raised: #0D0B14;
+  --line: #2A2342;
+  --brand: #9312FF;
+  --brand-hover: #A020FF;
   --brand-contrast: #FFFFFF;
-  --accent: #0284C7;
-  --radius: 6px;
+  --accent: #C9A3FF;
+  --radius: 8px;
 }
 
 @layer base {
   * {
     box-sizing: border-box;
-    border-color: var(--line);
+    border-color: var(--color-border);
   }
   
   html {
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #000000;
+    color: #F7F7F8;
   }
 
   body {
-    background-color: var(--surface);
-    color: var(--ink);
+    background-color: #000000;
+    color: var(--color-text);
     font-family: var(--font-sans), Inter, system-ui, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading), "Plus Jakarta Sans", system-ui, sans-serif;
     font-weight: 700;
-    letter-spacing: -0.025em;
-    color: var(--ink);
+    letter-spacing: -0.02em;
+    color: var(--color-text);
   }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}
+
+/* Glow-line motif utilities (DESIGN.md Section 5) */
+.glow-line-top {
+  position: relative;
+}
+.glow-line-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #A020FF 30%, #C9A3FF 50%, #A020FF 70%, transparent);
+  box-shadow: 0 0 12px rgba(160, 32, 255, 0.7);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.glow-line-bottom {
+  position: relative;
+}
+.glow-line-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #A020FF 30%, #C9A3FF 50%, #A020FF 70%, transparent);
+  box-shadow: 0 0 12px rgba(160, 32, 255, 0.7);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.glass-panel {
+  background-color: #0D0B14;
+  border: 1px solid #2A2342;
+  border-radius: 14px;
+}
+
+.glass-panel-interactive {
+  background-color: #0D0B14;
+  border: 1px solid #2A2342;
+  border-radius: 14px;
+  transition: border-color var(--motion-fast) ease-out, box-shadow var(--motion-fast) ease-out, transform var(--motion-fast) ease-out;
+}
+.glass-panel-interactive:hover {
+  border-color: rgba(147, 18, 255, 0.55);
+  box-shadow: 0 0 20px rgba(147, 18, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.violet-gradient-text {
+  background: linear-gradient(135deg, #F7F7F8 20%, #C9A3FF 60%, #A020FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-gradient-text {
+  background: linear-gradient(135deg, #A020FF 0%, #C9A3FF 50%, #7A1CF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-primary-violet {
+  background: linear-gradient(135deg, var(--color-primary-start) 0%, var(--color-primary-end) 100%);
+  color: #FFFFFF;
+  box-shadow: 0 0 18px rgba(160, 32, 255, 0.35);
+  transition: all var(--motion-fast) ease-out;
+}
+.btn-primary-violet:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 0 24px rgba(160, 32, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-dark {
+  background: #17132A;
+  color: #F7F7F8;
+  border: 1px solid #2A2342;
+  transition: all var(--motion-fast) ease-out;
+}
+.btn-secondary-dark:hover {
+  background: #231C3E;
+  border-color: #7468A0;
+}
+
+/* Animations for planet rim and glow */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
 }
 
 /* Accessibility: Honor reduced motion */
@@ -52,5 +191,8 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .animate-pulse-glow {
+    animation: none !important;
   }
 }

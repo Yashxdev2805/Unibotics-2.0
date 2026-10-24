@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AtmosphereLayer from "@/components/AtmosphereLayer";
 import "./globals.css";
 
 const fontSans = Inter({
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1D4ED8",
+  themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
 };
@@ -39,10 +40,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fontSans.variable} ${fontHeading.variable}`}>
-      <body className="min-h-screen flex flex-col font-sans bg-surface text-ink antialiased">
+    <html lang="en" className={`${fontSans.variable} ${fontHeading.variable} dark`}>
+      <body className="min-h-screen flex flex-col font-sans bg-black text-[#F7F7F8] antialiased selection:bg-[#9312FF]/30 selection:text-white relative">
+        <AtmosphereLayer />
+
+        {/* Skip to Content Link (WCAG 2.1 AA) */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[99999] focus:px-4 focus:py-2 focus:bg-[#17132A] focus:text-white focus:border focus:border-[#9312FF] focus:shadow-glow focus:rounded-md text-xs font-semibold"
+        >
+          Skip to main content
+        </a>
+
         <Header />
-        <div className="flex-1 flex flex-col">{children}</div>
+        <main id="main-content" tabIndex={-1} className="relative z-10 flex-1 flex flex-col focus:outline-none">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

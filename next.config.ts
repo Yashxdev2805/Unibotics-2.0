@@ -35,6 +35,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   output: isStandalone ? "standalone" : undefined,
+  experimental: {
+    cpus: process.env.CI ? 1 : undefined,
+  },
   async headers() {
     return [
       {
