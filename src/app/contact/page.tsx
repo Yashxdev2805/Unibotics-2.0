@@ -11,14 +11,14 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="flex-1 flex flex-col relative text-[#F7F7F8]">
+    <div className="flex-1 flex flex-col relative text-[#F8FAFC]">
       {/* Breadcrumb Navigation */}
-      <section className="border-b border-[#2A2342] bg-[#0D0B14]/60 py-3 px-4 sm:px-6 text-xs text-[#8B8988]">
+      <section className="border-b border-[#2F3545] bg-[#161920]/60 py-3 px-4 sm:px-6 text-xs text-[#94A3B8]">
         <div className="max-w-stage mx-auto flex items-center space-x-2">
           <Link href="/" className="hover:text-white transition-colors">
             Home
           </Link>
-          <span className="text-[#2A2342]">/</span>
+          <span className="text-[#2F3545]">/</span>
           <span className="font-semibold text-white">Institutional Inquiries & Quotes</span>
         </div>
       </section>
@@ -31,7 +31,7 @@ export default function ContactPage() {
           <div className="lg:col-span-7">
             <Suspense
               fallback={
-                <div className="glass-panel p-8 text-center text-xs text-[#8B8988]">
+                <div className="glass-panel p-8 text-center text-xs text-[#94A3B8]">
                   Loading institutional enquiry gateway...
                 </div>
               }
@@ -44,31 +44,31 @@ export default function ContactPage() {
           <div className="lg:col-span-5 space-y-6">
             
             {/* SLA Commitment Card */}
-            <div className="glass-panel p-6 border border-[#2A2342] glow-line-top space-y-3">
-              <div className="flex items-center space-x-2 text-[#45B558] text-xs font-mono font-semibold">
+            <div className="glass-panel p-6 border border-[#2F3545] glow-line-top space-y-3">
+              <div className="flex items-center space-x-2 text-[#10B981] text-xs font-mono font-semibold">
                 <Clock className="w-4 h-4" />
                 <span>OFFICIAL RESPONSE SLA</span>
               </div>
               <h3 className="text-lg font-bold text-white tracking-tight">
                 1 to 2 Working Days Guarantee
               </h3>
-              <p className="text-xs text-[#8B8988] leading-relaxed">
+              <p className="text-xs text-[#94A3B8] leading-relaxed">
                 Institutional requests are routed directly to technical program directors in Kurukshetra. We provide structured budget estimates, hardware bills of materials, and scheduling timelines.
               </p>
-              <div className="pt-2 border-t border-[#2A2342] text-[11px] font-mono text-[#7468A0]">
+              <div className="pt-2 border-t border-[#2F3545] text-[11px] font-mono text-[#64748B]">
                 MONITORING PROTOCOL: IMMEDIATE ADMIN ALERT
               </div>
             </div>
 
             {/* Direct Contact Directory Card */}
-            <div className="glass-panel p-6 border border-[#2A2342] space-y-4 text-xs text-[#8B8988]">
-              <span className="font-mono text-[10px] text-[#7468A0] uppercase font-bold tracking-wider block">
+            <div className="glass-panel p-6 border border-[#2F3545] space-y-4 text-xs text-[#94A3B8]">
+              <span className="font-mono text-[10px] text-[#64748B] uppercase font-bold tracking-wider block">
                 Direct Administrative Contacts
               </span>
 
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
-                  <MapPin className="w-4 h-4 text-[#C9A3FF] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#F97316] shrink-0 mt-0.5" />
                   <div>
                     <span className="font-semibold text-white block">
                       Operations Headquarters:
@@ -81,14 +81,14 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <Mail className="w-4 h-4 text-[#C9A3FF] shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-[#F97316] shrink-0 mt-0.5" />
                   <div>
                     <span className="font-semibold text-white block">
                       Institutional RFP Inbox:
                     </span>
                     <a
                       href="mailto:directorunibotics@gmail.com"
-                      className="text-[#C9A3FF] hover:underline font-mono"
+                      className="text-[#F97316] hover:underline font-mono"
                     >
                       directorunibotics@gmail.com
                     </a>
@@ -96,7 +96,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <ShieldCheck className="w-4 h-4 text-[#45B558] shrink-0 mt-0.5" />
+                  <ShieldCheck className="w-4 h-4 text-[#10B981] shrink-0 mt-0.5" />
                   <div>
                     <span className="font-semibold text-white block">
                       Compliance Verification:
@@ -110,8 +110,8 @@ export default function ContactPage() {
             </div>
 
             {/* Helpful Scope Notice */}
-            <div className="glass-panel p-5 border border-[#2A2342] flex items-start space-x-3 text-xs text-[#8B8988]">
-              <HelpCircle className="w-5 h-5 text-[#C9A3FF] shrink-0 mt-0.5" />
+            <div className="glass-panel p-5 border border-[#2F3545] flex items-start space-x-3 text-xs text-[#94A3B8]">
+              <HelpCircle className="w-5 h-5 text-[#F97316] shrink-0 mt-0.5" />
               <div>
                 <span className="font-bold text-white block">
                   Planning an ATL Grant Submission?

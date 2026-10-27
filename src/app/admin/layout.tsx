@@ -19,6 +19,10 @@ import {
 export const metadata = {
   title: "Administrative Control Center | Unibotics India",
   description: "Secured operations portal for leads, applications, and role authorizations.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default async function AdminLayout({

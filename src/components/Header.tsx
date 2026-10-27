@@ -1,15 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowRight, Zap } from "lucide-react";
+import { Menu, X, ArrowRight, Cpu } from "lucide-react";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close mobile drawer on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMobileMenuOpen(false);
@@ -26,17 +26,17 @@ export default function Header() {
     };
   }, [mobileMenuOpen]);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
 
   const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
+    { label: "Home",      href: "/" },
+    { label: "ATL Setup", href: "/atl-setup" },
     { label: "Workshops", href: "/workshops" },
-    { label: "Team", href: "/team" },
+    { label: "Services",  href: "/services" },
+    { label: "About",     href: "/about" },
+    { label: "Team",      href: "/team" },
   ];
 
   const isActive = (href: string) => {
@@ -45,53 +45,41 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-black/80 backdrop-blur-md border-b border-[#2A2342] transition-colors duration-200">
-      {/* Top Notice / Telemetry Strip */}
-      <div className="bg-[#0D0B14] text-[#8B8988] text-[11px] py-1 px-4 font-mono tracking-wide border-b border-[#2A2342]/70">
-        <div className="max-w-stage mx-auto flex flex-col sm:flex-row items-center justify-between gap-1">
-          <div className="flex items-center space-x-2">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#45B558] animate-pulse"></span>
-            <span className="text-[#F7F7F8]">NATIONAL STEM & ATL IMPLEMENTATION PARTNER</span>
-            <span className="hidden sm:inline text-[#7468A0]">•</span>
-            <span className="hidden sm:inline text-xs">KURUKSHETRA, HARYANA</span>
-          </div>
-          <div className="flex items-center space-x-4 text-xs">
-            <Link
-              href="/verify"
-              className="text-[#8B8988] hover:text-[#C9A3FF] transition-colors"
-            >
-              Verify Certificate
-            </Link>
-            <span className="text-[#2A2342]">|</span>
-            <span className="text-[10px] text-[#7468A0]">NEP 2020 & ATL COMPLIANT</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Bar */}
-      <div className="max-w-stage mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Brand Logo (Left) */}
+    <header
+      className="sticky top-0 z-50 w-full border-b border-[#2F3545] transition-colors duration-200"
+      style={{ background: "rgba(8, 9, 12, 0.92)", backdropFilter: "blur(16px)" }}
+    >
+      {/* Main Navigation Bar */}
+      <div className="max-w-stage mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+        {/* Brand Logo */}
         <Link
           href="/"
-          className="flex items-center space-x-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] rounded-lg p-1"
+          className="flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-[#F97316] rounded-lg p-1 group"
+          aria-label="Unibotics Home"
         >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#A020FF] to-[#7A1CF8] flex items-center justify-center text-white shadow-[0_0_14px_rgba(160,32,255,0.6)] group-hover:scale-105 transition-transform">
-            <Zap className="w-4 h-4 fill-white" />
-          </div>
+          <Image
+            src="/unibotics-logo.png"
+            alt="Unibotics Logo"
+            width={40}
+            height={40}
+            priority
+            className="w-10 h-10 object-contain rounded-md drop-shadow-[0_0_12px_rgba(249,115,22,0.5)] transition-transform duration-200 group-hover:scale-105"
+          />
           <div className="flex flex-col">
-            <span className="text-base font-black tracking-tight text-[#F7F7F8] group-hover:text-white transition-colors">
-              UNIBOTICS
+            <span className="text-xl font-black tracking-tight leading-none">
+              <span className="text-[#F97316]">Uni</span>
+              <span className="text-[#38BDF8]">botics</span>
             </span>
-            <span className="text-[9px] font-semibold tracking-widest text-[#C9A3FF] uppercase -mt-0.5">
-              Robotics Infrastructure
+            <span className="text-[9px] font-bold tracking-wider uppercase mt-1 text-[#94A3B8] font-mono">
+              Unified Intelligence &bull; Infinite Solution
             </span>
           </div>
         </Link>
 
-        {/* Centred Pill Navigation Menu (Desktop) */}
+        {/* Desktop Nav Links */}
         <nav
-          aria-label="Primary Navigation"
-          className="hidden md:flex items-center p-1 rounded-full bg-[#0D0B14]/90 border border-[#2A2342] shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
+          className="hidden md:flex items-center space-x-1"
+          aria-label="Main Navigation"
         >
           {navLinks.map((link) => {
             const active = isActive(link.href);
@@ -99,19 +87,20 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                prefetch={true}
-                aria-current={active ? "page" : undefined}
-                className={`relative px-4 py-1.5 text-xs font-medium rounded-full transition-all duration-150 ${
+                className={`relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-150 ${
                   active
-                    ? "bg-[#17132A] text-white shadow-[0_0_12px_rgba(147,18,255,0.35)] border border-[#7468A0]/40"
-                    : "text-[#8B8988] hover:text-[#F7F7F8] hover:bg-[#17132A]/50"
+                    ? "text-[#F97316] bg-[#212530] border border-[#2F3545]"
+                    : "text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#161920]"
                 }`}
               >
                 {link.label}
                 {active && (
                   <span
-                    aria-hidden="true"
-                    className="absolute -bottom-1 left-3 right-3 h-[2px] bg-gradient-to-r from-transparent via-[#A020FF] to-transparent shadow-[0_0_8px_#A020FF]"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
+                    style={{
+                      background: "linear-gradient(90deg, #F97316, #FB923C)",
+                      boxShadow: "0 0 8px #F97316",
+                    }}
                   />
                 )}
               </Link>
@@ -119,81 +108,72 @@ export default function Header() {
           })}
         </nav>
 
-        {/* Actions (Right) */}
+        {/* Desktop Right CTAs */}
         <div className="hidden md:flex items-center space-x-3">
           <Link
             href="/login"
-            prefetch={true}
-            className="px-3.5 py-1.5 text-xs font-medium text-[#8B8988] hover:text-[#F7F7F8] hover:bg-[#17132A] rounded-full transition-all duration-150 border border-transparent hover:border-[#2A2342]"
+            className="px-4 py-2 text-sm font-semibold text-[#94A3B8] hover:text-white transition-colors"
           >
-            Login
+            Portal Login
           </Link>
           <Link
             href="/contact"
-            prefetch={true}
-            className="btn-primary-violet px-4 py-1.5 text-xs font-semibold rounded-full flex items-center space-x-1.5"
+            className="btn-primary-cyan px-5 py-2.5 rounded-full text-sm font-bold tracking-wide flex items-center space-x-2 shadow-glow"
           >
-            <span>Get in touch</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span>Request Proposal</span>
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Hamburger Button */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-[#F7F7F8] bg-[#0D0B14] hover:bg-[#17132A] border border-[#2A2342] rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
+          className="md:hidden p-2 rounded-lg text-[#94A3B8] hover:text-white hover:bg-[#161920] border border-transparent hover:border-[#2F3545] transition-colors focus:outline-none focus:ring-2 focus:ring-[#F97316]"
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileMenuOpen}
-          aria-label="Toggle navigation menu"
         >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* Mobile Drawer (Section 7.1: full-height panel with 48px links, focus trapped, primary CTA bottom) */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mobile Navigation Drawer"
-          className="md:hidden fixed inset-x-0 top-[105px] bottom-0 bg-[#000000]/95 backdrop-blur-xl border-t border-[#2A2342] px-6 py-6 flex flex-col justify-between z-50 animate-in fade-in slide-in-from-top-4 duration-200"
-        >
+        <div className="md:hidden border-t border-[#2F3545] bg-[#08090C] px-4 py-6 space-y-4">
           <nav className="flex flex-col space-y-1">
-            {navLinks.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  aria-current={active ? "page" : undefined}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`h-12 flex items-center px-4 rounded-xl text-base font-semibold transition-all ${
-                    active
-                      ? "bg-[#17132A] text-white border border-[#A020FF]/40 shadow-glow"
-                      : "text-[#8B8988] hover:text-[#F7F7F8] hover:bg-[#0D0B14]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`px-4 py-3 rounded-lg text-sm font-semibold transition-colors flex items-center justify-between ${
+                  isActive(link.href)
+                    ? "bg-[#212530] text-[#F97316] border border-[#2F3545]"
+                    : "text-[#94A3B8] hover:text-white hover:bg-[#161920]"
+                }`}
+              >
+                <span>{link.label}</span>
+                {isActive(link.href) && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F97316]" />
+                )}
+              </Link>
+            ))}
           </nav>
 
-          <div className="pt-6 border-t border-[#2A2342] space-y-3">
+          <div className="pt-4 border-t border-[#2F3545] space-y-2">
             <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full h-12 flex items-center justify-center text-sm font-medium text-[#F7F7F8] bg-[#0D0B14] border border-[#2A2342] rounded-xl hover:bg-[#17132A] transition-colors"
+              className="block w-full py-2.5 px-4 text-center rounded-lg text-sm font-semibold text-[#94A3B8] hover:text-white bg-[#161920] border border-[#2F3545]"
             >
-              Portal Login
+              Institutional Portal Login
             </Link>
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full h-12 flex items-center justify-center text-sm font-semibold btn-primary-violet rounded-xl space-x-2"
+              className="btn-primary-cyan block w-full py-3 px-4 text-center rounded-lg text-sm font-bold shadow-glow"
             >
-              <span>Get in touch</span>
-              <ArrowRight className="w-4 h-4" />
+              Request Institutional Proposal
             </Link>
           </div>
         </div>

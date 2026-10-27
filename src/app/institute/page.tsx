@@ -16,6 +16,10 @@ import {
 export const metadata = {
   title: "Institute Coordinator Portal | Unibotics India",
   description: "Track institutional robotics bookings, student attendance rosters, and campus credential repositories.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default async function InstitutePortalPage() {

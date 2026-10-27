@@ -237,28 +237,28 @@ export default async function TeamPage(props: {
   // --- VIEW 1: MENTOR FIELD WORKSPACE (AUTHENTICATED) ---
   if (showWorkspace && user) {
     return (
-      <div className="flex-1 flex flex-col relative text-[#F7F7F8]">
+      <div className="flex-1 flex flex-col relative text-[#F8FAFC]">
         {/* Workspace Sub-Header */}
-        <div className="border-b border-[#2A2342] bg-[#0D0B14]/80 px-4 sm:px-6 py-3 flex items-center justify-between">
+        <div className="border-b border-[#2F3545] bg-[#161920]/80 px-4 sm:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <span className="font-mono text-xs text-[#C9A3FF] font-semibold uppercase">
+            <span className="font-mono text-xs text-[#F97316] font-semibold uppercase">
               MENTOR FIELD WORKSPACE
             </span>
-            <span className="text-[#2A2342]">|</span>
+            <span className="text-[#2F3545]">|</span>
             <Link
               href="/team?view=directory"
-              className="text-xs text-[#8B8988] hover:text-white transition-colors"
+              className="text-xs text-[#94A3B8] hover:text-white transition-colors"
             >
               View Public Team Page →
             </Link>
           </div>
 
           <div className="flex items-center space-x-4 text-xs font-mono">
-            <span className="text-[#7468A0] hidden sm:inline">{user.email}</span>
+            <span className="text-[#64748B] hidden sm:inline">{user.email}</span>
             <form action={logout}>
               <button
                 type="submit"
-                className="text-[#8B8988] hover:text-[#F03B2A] transition-colors flex items-center space-x-1"
+                className="text-[#94A3B8] hover:text-[#F03B2A] transition-colors flex items-center space-x-1"
               >
                 <LogOut className="w-3.5 h-3.5" />
                 <span>Sign Out</span>
@@ -271,7 +271,7 @@ export default async function TeamPage(props: {
         <main className="flex-1 max-w-stage w-full mx-auto px-4 sm:px-6 py-8 space-y-6">
           <div className="glass-panel p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#A020FF] to-[#7A1CF8] text-white flex items-center justify-center font-bold text-xl font-mono shrink-0 shadow-glow">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#F97316] to-[#0EA5E9] text-white flex items-center justify-center font-bold text-xl font-mono shrink-0 shadow-glow">
                 {mentorName.charAt(0).toUpperCase()}
               </div>
               <div>
@@ -279,19 +279,19 @@ export default async function TeamPage(props: {
                   <h1 className="text-xl font-black text-white tracking-tight font-mono">
                     {mentorName}
                   </h1>
-                  <span className="px-2 py-0.5 bg-[#17132A] border border-[#7468A0]/40 text-[10px] font-mono font-bold text-[#C9A3FF] uppercase rounded-full">
+                  <span className="px-2 py-0.5 bg-[#212530] border border-[#64748B]/40 text-[10px] font-mono font-bold text-[#F97316] uppercase rounded-full">
                     Field Lead
                   </span>
                 </div>
-                <p className="text-xs text-[#8B8988] font-mono mt-0.5">
+                <p className="text-xs text-[#94A3B8] font-mono mt-0.5">
                   Authorized Field Mentor • {user.email}
                 </p>
               </div>
             </div>
 
             <div className="flex items-center space-x-3 text-xs font-mono">
-              <div className="bg-[#17132A] border border-[#2A2342] px-4 py-2 rounded-xl text-center">
-                <span className="text-[10px] text-[#7468A0] block uppercase">
+              <div className="bg-[#212530] border border-[#2F3545] px-4 py-2 rounded-xl text-center">
+                <span className="text-[10px] text-[#64748B] block uppercase">
                   ASSIGNED SESSIONS
                 </span>
                 <strong className="text-base font-bold text-white">
@@ -302,8 +302,8 @@ export default async function TeamPage(props: {
           </div>
 
           <div className="space-y-4">
-            <div className="border-b border-[#2A2342] pb-2 flex items-center space-x-2">
-              <Calendar className="w-4 h-4 text-[#C9A3FF]" />
+            <div className="border-b border-[#2F3545] pb-2 flex items-center space-x-2">
+              <Calendar className="w-4 h-4 text-[#F97316]" />
               <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono">
                 Assigned Workshop Sessions & Attendance Checklists
               </h2>
@@ -318,15 +318,15 @@ export default async function TeamPage(props: {
 
   // --- VIEW 2: PUBLIC TEAM DIRECTORY & RECRUITMENT PAGE (DESIGN.md Section 12) ---
   return (
-    <div className="flex-1 flex flex-col relative text-[#F7F7F8]">
+    <div className="flex-1 flex flex-col relative text-[#F8FAFC]">
       
       {/* Mentor Workspace Access Banner if user is logged in */}
       {isAuthorizedMentor && (
-        <div className="bg-[#17132A] border-b border-[#2A2342] py-2 px-4 text-center text-xs text-[#C9A3FF]">
+        <div className="bg-[#212530] border-b border-[#2F3545] py-2 px-4 text-center text-xs text-[#F97316]">
           <span>You are recognized as an authorized field mentor. </span>
           <Link
             href="/team?view=workspace"
-            className="font-bold underline text-white hover:text-[#C9A3FF] ml-1"
+            className="font-bold underline text-white hover:text-[#F97316] ml-1"
           >
             Launch Mentor Field Workspace →
           </Link>
@@ -335,14 +335,14 @@ export default async function TeamPage(props: {
 
       {/* Hero Header */}
       <section className="pt-12 pb-8 px-4 sm:px-6 text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#17132A] border border-[#2A2342] text-xs font-mono text-[#C9A3FF]">
-          <ShieldCheck className="w-3.5 h-3.5 text-[#45B558]" />
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#212530] border border-[#2F3545] text-xs font-mono text-[#F97316]">
+          <ShieldCheck className="w-3.5 h-3.5 text-[#10B981]" />
           <span>VERIFIED ENGINEERING INSTRUCTORS</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
           The Mentors Behind Indian Campus Robotics
         </h1>
-        <p className="text-sm sm:text-base text-[#8B8988] leading-relaxed">
+        <p className="text-sm sm:text-base text-[#94A3B8] leading-relaxed">
           Our engineering team blends industrial automation experience with deep pedagogical rigor. We deliver physical hardware training across schools, polytechnics, and universities.
         </p>
       </section>
@@ -353,10 +353,10 @@ export default async function TeamPage(props: {
           {publicTeamMembers.map((member, idx) => (
             <div
               key={idx}
-              className="glass-panel p-6 sm:p-8 space-y-4 border border-[#2A2342] hover:border-[#7468A0] transition-colors"
+              className="glass-panel p-6 sm:p-8 space-y-4 border border-[#2F3545] hover:border-[#64748B] transition-colors"
             >
               <div className="flex items-start space-x-4">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#A020FF] to-[#7A1CF8] text-white flex items-center justify-center font-bold text-lg font-mono shrink-0 shadow-glow">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#F97316] to-[#0EA5E9] text-white flex items-center justify-center font-bold text-lg font-mono shrink-0 shadow-glow">
                   {member.initials}
                 </div>
                 <div className="space-y-1">
@@ -364,24 +364,24 @@ export default async function TeamPage(props: {
                     <h2 className="text-base sm:text-lg font-bold text-white">
                       {member.name}
                     </h2>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#17132A] text-[#45B558] border border-[#45B558]/30">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#212530] text-[#10B981] border border-[#10B981]/30">
                       Verified
                     </span>
                   </div>
-                  <p className="text-xs font-medium text-[#C9A3FF]">
+                  <p className="text-xs font-medium text-[#F97316]">
                     {member.role}
                   </p>
-                  <span className="text-[11px] font-mono text-[#7468A0] block">
+                  <span className="text-[11px] font-mono text-[#64748B] block">
                     {member.credentials}
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs text-[#8B8988] leading-relaxed pt-2 border-t border-[#2A2342]">
+              <p className="text-xs text-[#94A3B8] leading-relaxed pt-2 border-t border-[#2F3545]">
                 {member.bio}
               </p>
 
-              <div className="p-2.5 rounded-lg bg-[#0D0B14] border border-[#2A2342] text-[11px] text-[#7468A0] font-mono">
+              <div className="p-2.5 rounded-lg bg-[#161920] border border-[#2F3545] text-[11px] text-[#64748B] font-mono">
                 Focus: {member.specialization}
               </div>
             </div>
@@ -389,21 +389,21 @@ export default async function TeamPage(props: {
         </div>
 
         {/* Join Team Call to Action (Section 12: Join Team call to action at the end) */}
-        <div className="glass-panel p-8 sm:p-10 border-[#2A2342] glow-line-top flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="glass-panel p-8 sm:p-10 border-[#2F3545] glow-line-top flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#C9A3FF]">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#F97316]">
               Careers & Field Instructor Network
             </span>
             <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
               Are you an engineer passionate about teaching hands-on STEM?
             </h3>
-            <p className="text-xs text-[#8B8988] max-w-xl">
+            <p className="text-xs text-[#94A3B8] max-w-xl">
               We recruit hardware engineers, robotics graduates, and embedded systems developers to mentor campus cohorts across Haryana, Punjab, and NCR.
             </p>
           </div>
           <Link
             href="/careers"
-            className="btn-primary-violet px-7 py-3 rounded-full text-xs font-semibold tracking-wider uppercase shrink-0 flex items-center space-x-2"
+            className="btn-primary-cyan px-7 py-3 rounded-full text-xs font-semibold tracking-wider uppercase shrink-0 flex items-center space-x-2"
           >
             <span>Apply as Mentor</span>
             <ArrowRight className="w-4 h-4" />

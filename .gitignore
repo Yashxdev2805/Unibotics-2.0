@@ -39,3 +39,4 @@ Thumbs.db
 Documentation/
 Backup/
 CONTENT_TODO.md
+/public/*

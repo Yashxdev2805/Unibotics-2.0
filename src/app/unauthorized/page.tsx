@@ -4,6 +4,10 @@ import { ShieldAlert, ArrowLeft } from "lucide-react";
 export const metadata = {
   title: "Access Denied | Unibotics",
   description: "You do not have permission to view the requested institutional resource.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function UnauthorizedPage() {
